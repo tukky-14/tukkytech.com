@@ -1,17 +1,24 @@
 // pages/blog/[id].js
 import { client } from '../../libs/client';
+import Navbar from '../components/Navbar';
 
 export default function BlogId({ blog }: any) {
     return (
-        <main>
-            <h1>{blog.title}</h1>
-            <p>{blog.publishedAt}</p>
-            <div
-                dangerouslySetInnerHTML={{
-                    __html: `${blog.body}`,
-                }}
-            />
-        </main>
+        <>
+            <Navbar />
+            <div className="max-w-screen-xl mx-auto pt-5">
+                <main className="max-w-screen-md">
+                    <h1 className="text-2xl font-bold">{blog.title}</h1>
+                    <p className="text-sm text-gray-600">作成日：{blog.publishedAt}</p>
+                    <div
+                        className="mt-5"
+                        dangerouslySetInnerHTML={{
+                            __html: `${blog.body}`,
+                        }}
+                    />
+                </main>
+            </div>
+        </>
     );
 }
 
