@@ -6,8 +6,8 @@ export default function Home({ blog }: any) {
     return (
         <div>
             <Navbar />
-            <div className="mx-auto max-w-screen-xl pt-5">
-                <ul className="grid grid-cols-4 gap-4">
+            <div className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {blog.map((blog: any) => (
                         <li key={blog.id}>
                             <Link
