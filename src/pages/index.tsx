@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import dayjs from 'dayjs';
 
 export default function Home({ blog }: any) {
+    console.log('blog:', blog);
     return (
         <div>
             <Navbar />
@@ -15,9 +16,22 @@ export default function Home({ blog }: any) {
                                 className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                                 href={`/blog/${blog.id}`}
                             >
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <img
+                                    className="mb-4 h-[150px]"
+                                    src={blog.image.url}
+                                    alt="記事のイメージ画像"
+                                />
+                                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {blog.title}
                                 </h5>
+                                {blog.tag.map((tag: string) => (
+                                    <span
+                                        className="inline-block mb-1 mr-2 py-1 px-2 text-sm bg-blue-200 rounded"
+                                        key={tag}
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
                                 <p className="font-normal text-sm text-gray-600 dark:text-gray-400">
                                     更新日：{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}
                                 </p>
