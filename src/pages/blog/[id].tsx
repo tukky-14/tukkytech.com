@@ -1,15 +1,17 @@
-// pages/blog/[id].js
 import { client } from '../../libs/client';
 import Navbar from '../components/Navbar';
+import dayjs from 'dayjs';
 
 export default function BlogId({ blog }: any) {
     return (
         <>
             <Navbar />
             <div className="max-w-screen-xl mx-auto pt-5">
-                <main className="max-w-screen-md">
+                <main className="max-w-screen-md px-2">
                     <h1 className="text-2xl font-bold">{blog.title}</h1>
-                    <p className="text-sm text-gray-600">作成日：{blog.publishedAt}</p>
+                    <p className="text-sm text-gray-600">
+                        更新日：{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}
+                    </p>
                     <div
                         className="mt-5"
                         dangerouslySetInnerHTML={{

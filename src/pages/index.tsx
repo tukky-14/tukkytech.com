@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { client } from '../libs/client';
 import Navbar from './components/Navbar';
+import dayjs from 'dayjs';
 
 export default function Home({ blog }: any) {
     return (
@@ -17,9 +18,8 @@ export default function Home({ blog }: any) {
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {blog.title}
                                 </h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">
-                                    Here are the biggest enterprise technology acquisitions of 2021
-                                    so far, in reverse chronological order.
+                                <p className="font-normal text-sm text-gray-600 dark:text-gray-400">
+                                    更新日：{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}
                                 </p>
                             </Link>
                         </li>
