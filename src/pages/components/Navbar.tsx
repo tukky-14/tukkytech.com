@@ -3,7 +3,15 @@ import blog from '../../images/blog.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = () => {
+type NavbarProps = {
+    handleAllClick?: () => void;
+    handleDevClick?: () => void;
+    handleLifeClick?: () => void;
+};
+
+const Navbar = (props: NavbarProps) => {
+    const { handleAllClick, handleDevClick, handleLifeClick } = props;
+
     return (
         <>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -24,29 +32,29 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
                             <li>
-                                <a
-                                    href="#"
+                                <button
+                                    onClick={handleAllClick}
                                     className="text-gray-900 dark:text-white hover:underline"
                                     aria-current="page"
                                 >
-                                    Home
-                                </a>
+                                    すべて
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <button
+                                    onClick={handleDevClick}
                                     className="text-gray-900 dark:text-white hover:underline"
                                 >
-                                    Company
-                                </a>
+                                    開発
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <button
+                                    onClick={handleLifeClick}
                                     className="text-gray-900 dark:text-white hover:underline"
                                 >
-                                    Team
-                                </a>
+                                    生活
+                                </button>
                             </li>
                         </ul>
                     </div>

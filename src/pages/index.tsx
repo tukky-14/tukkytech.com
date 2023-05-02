@@ -2,15 +2,35 @@ import Link from 'next/link';
 import { client } from '../libs/client';
 import Navbar from './components/Navbar';
 import dayjs from 'dayjs';
+import { useState } from 'react';
 
 export default function Home({ blog }: any) {
     console.log('blog:', blog);
+    const allBlog = blog;
+    const [filterBlog, setFilterBlog] = useState(allBlog);
+
+    const handleAllClick = () => {
+        setFilterBlog(allBlog);
+    };
+
+    const handleDevClick = () => {
+        setFilterBlog(allBlog.filter((blog: any) => blog.tag.includes('開発')));
+    };
+
+    const handleLifeClick = () => {
+        setFilterBlog(allBlog.filter((blog: any) => blog.tag.includes('生活')));
+    };
+
     return (
         <div>
-            <Navbar />
+            <Navbar
+                handleAllClick={handleAllClick}
+                handleDevClick={handleDevClick}
+                handleLifeClick={handleLifeClick}
+            />
             <div className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {blog.map((blog: any) => (
+                    {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
                             <Link
                                 className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
