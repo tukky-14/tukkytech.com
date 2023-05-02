@@ -17,7 +17,7 @@ export default function Home({ blog }: any) {
                                 href={`/blog/${blog.id}`}
                             >
                                 <img
-                                    className="mb-4 h-[150px]"
+                                    className="mb-4 w-full h-[150px]"
                                     src={blog.image.url}
                                     alt="記事のイメージ画像"
                                 />
