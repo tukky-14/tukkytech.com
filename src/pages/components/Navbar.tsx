@@ -9,7 +9,7 @@ type NavbarProps = {
     handleDevClick?: () => void;
     handleLifeClick?: () => void;
     handleSearchChange?: (e: any) => void;
-    isDetail: boolean;
+    isDetail?: boolean;
 };
 
 const Navbar = (props: NavbarProps) => {
