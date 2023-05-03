@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 export default function BlogId({ blog }: any) {
     return (
         <>
-            <Navbar />
+            <Navbar isDetail={true} />
             <div className="max-w-screen-xl mx-auto pt-5">
                 <main className="max-w-screen-md px-2">
                     <h1 className="text-2xl font-bold">{blog.title}</h1>
