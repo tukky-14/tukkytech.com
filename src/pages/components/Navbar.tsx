@@ -7,10 +7,11 @@ type NavbarProps = {
     handleAllClick?: () => void;
     handleDevClick?: () => void;
     handleLifeClick?: () => void;
+    handleSearchChange?: (e: any) => void;
 };
 
 const Navbar = (props: NavbarProps) => {
-    const { handleAllClick, handleDevClick, handleLifeClick } = props;
+    const { handleAllClick, handleDevClick, handleLifeClick, handleSearchChange } = props;
 
     return (
         <>
@@ -78,6 +79,7 @@ const Navbar = (props: NavbarProps) => {
                                 id="search-navbar"
                                 className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Search..."
+                                onChange={handleSearchChange}
                             />
                         </div>
                     </div>
@@ -94,6 +96,7 @@ const Navbar = (props: NavbarProps) => {
                                 id="search-navbar"
                                 className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Search..."
+                                onChange={handleSearchChange}
                             />
                         </div>
                     </div>

@@ -21,12 +21,19 @@ export default function Home({ blog }: any) {
         setFilterBlog(allBlog.filter((blog: any) => blog.tag.includes('生活')));
     };
 
+    const handleSearchChange = (e: any) => {
+        const searchWord = e.target.value;
+        const searchResult = allBlog.filter((blog: any) => blog.title.includes(searchWord));
+        setFilterBlog(searchResult);
+    };
+
     return (
         <div>
             <Navbar
                 handleAllClick={handleAllClick}
                 handleDevClick={handleDevClick}
                 handleLifeClick={handleLifeClick}
+                handleSearchChange={handleSearchChange}
             />
             <div className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
