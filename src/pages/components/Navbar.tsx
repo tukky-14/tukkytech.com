@@ -5,15 +5,15 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 type NavbarProps = {
+    allTags?: string[];
     handleAllClick?: () => void;
-    handleDevClick?: () => void;
-    handleLifeClick?: () => void;
+    handleTagClick?: (e: any) => void;
     handleSearchChange?: (e: any) => void;
     isDetail?: boolean;
 };
 
 const Navbar = (props: NavbarProps) => {
-    const { handleAllClick, handleDevClick, handleLifeClick, handleSearchChange, isDetail } = props;
+    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isDetail } = props;
 
     return (
         <>
@@ -21,10 +21,7 @@ const Navbar = (props: NavbarProps) => {
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
                     <div className="flex items-center">
                         <img src={blog.src} className="h-7 w-7 mr-1" alt="サイトのアイコン画像" />
-                        <Link
-                            href="/"
-                            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-                        >
+                        <Link href="/" className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                             Jam Stack Blog
                         </Link>
                     </div>
@@ -33,10 +30,7 @@ const Navbar = (props: NavbarProps) => {
             <nav className="bg-gray-50 dark:bg-gray-700">
                 <div className="max-w-screen-xl px-4 py-3 mx-auto flex justify-between">
                     {isDetail ? (
-                        <Link
-                            href="/"
-                            className="flex items-center text-gray-900 dark:text-white hover:underline"
-                        >
+                        <Link href="/" className="flex items-center text-gray-900 dark:text-white hover:underline">
                             <FontAwesomeIcon className="mr-2" icon={faArrowLeft} />
                             記事一覧に戻る
                         </Link>
@@ -52,22 +46,17 @@ const Navbar = (props: NavbarProps) => {
                                         すべて
                                     </button>
                                 </li>
-                                <li>
-                                    <button
-                                        onClick={handleDevClick}
-                                        className="text-gray-900 dark:text-white hover:underline"
-                                    >
-                                        開発
-                                    </button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={handleLifeClick}
-                                        className="text-gray-900 dark:text-white hover:underline"
-                                    >
-                                        生活
-                                    </button>
-                                </li>
+                                {allTags?.map((tag: string) => (
+                                    <li key={tag}>
+                                        <button
+                                            name={tag}
+                                            onClick={handleTagClick}
+                                            className="text-gray-900 dark:text-white hover:underline"
+                                        >
+                                            {tag}
+                                        </button>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     )}

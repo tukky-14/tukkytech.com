@@ -7,18 +7,22 @@ import { useState } from 'react';
 export default function Home({ blog }: any) {
     console.log('blog:', blog);
     const allBlog = blog;
+    const allTags: any = [
+        ...new Set(
+            blog
+                .map((blog: any) => blog.tag)
+                .join(',')
+                .split(',')
+        ),
+    ];
     const [filterBlog, setFilterBlog] = useState(allBlog);
 
     const handleAllClick = () => {
         setFilterBlog(allBlog);
     };
 
-    const handleDevClick = () => {
-        setFilterBlog(allBlog.filter((blog: any) => blog.tag.includes('開発')));
-    };
-
-    const handleLifeClick = () => {
-        setFilterBlog(allBlog.filter((blog: any) => blog.tag.includes('生活')));
+    const handleTagClick = (e: any) => {
+        setFilterBlog(allBlog.filter((blog: any) => blog.tag.includes(e.target.name)));
     };
 
     const handleSearchChange = (e: any) => {
@@ -31,37 +35,39 @@ export default function Home({ blog }: any) {
         <div>
             <Navbar
                 handleAllClick={handleAllClick}
-                handleDevClick={handleDevClick}
-                handleLifeClick={handleLifeClick}
+                handleTagClick={handleTagClick}
                 handleSearchChange={handleSearchChange}
+                allTags={allTags}
             />
             <div className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
                             <Link
-                                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                                className="relative block h-80 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                                 href={`/blog/${blog.id}`}
                             >
                                 <img
                                     className="mb-4 w-full h-[150px]"
-                                    src={blog.image.url}
+                                    src={blog.image?.url || 'https://picsum.photos/id/24/4855/1803'}
                                     alt="記事のイメージ画像"
                                 />
                                 <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {blog.title}
                                 </h5>
-                                {blog.tag.map((tag: string) => (
-                                    <span
-                                        className="inline-block mb-1 mr-2 py-1 px-2 text-sm bg-blue-200 rounded"
-                                        key={tag}
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
-                                <p className="font-normal text-sm text-gray-600 dark:text-gray-400">
-                                    更新日：{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}
-                                </p>
+                                <div className="absolute bottom-2">
+                                    {blog.tag.map((tag: string) => (
+                                        <span
+                                            className="inline-block mb-1 mr-2 py-1 px-2 text-sm bg-blue-200 rounded"
+                                            key={tag}
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                    <p className="font-normal text-sm text-gray-600 dark:text-gray-400">
+                                        更新日：{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}
+                                    </p>
+                                </div>
                             </Link>
                         </li>
                     ))}
