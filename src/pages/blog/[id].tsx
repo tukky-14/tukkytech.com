@@ -7,6 +7,7 @@ import 'highlight.js/styles/hybrid.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import Footer from '../components/Footer';
 
 export default function BlogId({ blog }: any) {
     return (
@@ -33,6 +34,7 @@ export default function BlogId({ blog }: any) {
                     />
                 </main>
             </div>
+            <Footer />
         </>
     );
 }

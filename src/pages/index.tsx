@@ -3,6 +3,7 @@ import { client } from '../libs/client';
 import Navbar from './components/Navbar';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import Footer from './components/Footer';
 
 export default function Home({ blog }: any) {
     console.log('blog:', blog);
@@ -73,6 +74,7 @@ export default function Home({ blog }: any) {
                     ))}
                 </ul>
             </div>
+            <Footer />
         </div>
     );
 }
