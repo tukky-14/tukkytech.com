@@ -1,6 +1,9 @@
 import { client } from '../../libs/client';
 import Navbar from '../components/Navbar';
 import dayjs from 'dayjs';
+import { load } from 'cheerio';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/hybrid.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -46,6 +49,15 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: { params: { id: string } }) => {
     const id = context.params.id;
     const data = await client.get({ endpoint: 'blog', contentId: id });
+
+    // シンタックスハイライト
+    const $ = load(data.body);
+    $('pre code').each((_, elm) => {
+        const result = hljs.highlightAuto($(elm).text());
+        $(elm).html(result.value);
+        $(elm).addClass('hljs');
+    });
+    data.body = $.html();
 
     return {
         props: {
