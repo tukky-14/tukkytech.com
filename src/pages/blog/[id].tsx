@@ -15,7 +15,7 @@ export default function BlogId({ blog }: any) {
             <Navbar isDetail={true} />
             <div className="max-w-screen-xl mx-auto pt-5">
                 <main className="max-w-screen-md px-2">
-                    <h1 className="text-2xl font-bold mb-1">{blog.title}</h1>
+                    <h1 className="text-xl sm:text-2xl font-bold mb-1">{blog.title}</h1>
                     <div className="flex gap-4 leading-6">
                         <p className="flex items-center text-sm text-gray-600">
                             <FontAwesomeIcon className="mr-0.5" icon={faCalendarPlus} />

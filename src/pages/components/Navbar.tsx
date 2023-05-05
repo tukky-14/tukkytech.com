@@ -27,7 +27,7 @@ const Navbar = (props: NavbarProps) => {
                     </button>
                 </div>
             </nav>
-            <nav className="bg-gray-50 dark:bg-gray-700">
+            <nav className="hidden sm:block bg-gray-50 dark:bg-gray-700">
                 <div className="max-w-screen-xl px-4 py-3 mx-auto flex justify-between">
                     {isDetail ? (
                         <Link href="/" className="flex items-center text-gray-900 dark:text-white hover:underline">
