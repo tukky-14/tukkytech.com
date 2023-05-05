@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25em 0.5em;
+    background: transparent;
+    border-left: solid 5px #7db4e6;
+}
+
 /* 参考 */
 /* https://saruwakakun.com/html-css/reference/blockquote */
 blockquote {
