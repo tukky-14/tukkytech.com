@@ -58,7 +58,7 @@ export default function Home({ blog }: any) {
                                 <div className="absolute bottom-2">
                                     {blog.tag.map((tag: string) => (
                                         <span
-                                            className="inline-block mb-1 mr-2 py-1 px-2 text-sm bg-blue-200 rounded"
+                                            className="inline-block mb-1 mr-2 py-0.5 px-1.5 text-sm bg-gray-200 rounded"
                                             key={tag}
                                         >
                                             {tag}
