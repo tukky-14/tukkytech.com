@@ -19,7 +19,7 @@ h3 > a {
     color: #2563eb;
     text-decoration: none;
 }
-p > a,
+p > a:hover,
 h3 > a:hover {
     text-decoration: underline;
 }
