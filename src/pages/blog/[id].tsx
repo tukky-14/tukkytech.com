@@ -19,11 +19,11 @@ export default function BlogId({ blog }: any) {
                     <div className="flex gap-4 leading-6">
                         <p className="flex items-center text-sm text-gray-600">
                             <FontAwesomeIcon className="mr-0.5" icon={faCalendarPlus} />
-                            <span>{dayjs(blog.createdAt).format('YYYY年MM月DD日')}</span>
+                            <span>{dayjs(blog.createdAt).format('YYYY/MM/DD')}</span>
                         </p>
                         <p className="flex items-center text-sm text-gray-600">
                             <FontAwesomeIcon className="mr-0.5" icon={faPenToSquare} />
-                            <span>{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}</span>
+                            <span>{dayjs(blog.updatedAt).format('YYYY/MM/DD')}</span>
                         </p>
                     </div>
                     <div

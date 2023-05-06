@@ -1,9 +1,12 @@
-import Link from 'next/link';
-import { client } from '../libs/client';
-import Navbar from './components/Navbar';
 import dayjs from 'dayjs';
-import { useState } from 'react';
 import Footer from './components/Footer';
+import Link from 'next/link';
+import Navbar from './components/Navbar';
+import { client } from '../libs/client';
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home({ blog }: any) {
     console.log('blog:', blog);
@@ -14,6 +17,7 @@ export default function Home({ blog }: any) {
                 .map((blog: any) => blog.tag)
                 .join(',')
                 .split(',')
+                .sort()
         ),
     ];
     const [filterBlog, setFilterBlog] = useState(allBlog);
@@ -45,7 +49,7 @@ export default function Home({ blog }: any) {
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
                             <Link
-                                className="relative block h-80 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                                className="relative block h-[22rem] max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                                 href={`/blog/${blog.id}`}
                             >
                                 <img
@@ -56,7 +60,7 @@ export default function Home({ blog }: any) {
                                 <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {blog.title}
                                 </h5>
-                                <div className="absolute bottom-2">
+                                <div className="absolute bottom-4">
                                     {blog.tag.map((tag: string) => (
                                         <span
                                             className="inline-block mb-1 mr-2 py-0.5 px-1.5 text-sm bg-gray-200 rounded"
@@ -65,9 +69,16 @@ export default function Home({ blog }: any) {
                                             {tag}
                                         </span>
                                     ))}
-                                    <p className="font-normal text-sm text-gray-600 dark:text-gray-400">
-                                        更新日：{dayjs(blog.updatedAt).format('YYYY年MM月DD日')}
-                                    </p>
+                                    <div className="flex gap-4 leading-6">
+                                        <p className="flex items-center text-sm text-gray-600">
+                                            <FontAwesomeIcon className="mr-0.5" icon={faCalendarPlus} />
+                                            <span>{dayjs(blog.createdAt).format('YYYY/MM/DD')}</span>
+                                        </p>
+                                        <p className="flex items-center text-sm text-gray-600">
+                                            <FontAwesomeIcon className="mr-0.5" icon={faPenToSquare} />
+                                            <span>{dayjs(blog.updatedAt).format('YYYY/MM/DD')}</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </Link>
                         </li>
