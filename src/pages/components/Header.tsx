@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-type NavbarProps = {
+type HeaderProps = {
     allTags?: string[];
     handleAllClick?: () => void;
     handleTagClick?: (e: any) => void;
@@ -12,21 +12,21 @@ type NavbarProps = {
     isTop?: boolean;
 };
 
-const Navbar = (props: NavbarProps) => {
+const Header = (props: HeaderProps) => {
     const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop } = props;
 
     return (
         <>
-            <nav className="bg-white border-gray-200 dark:bg-gray-900">
+            <header className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
                     <button className="flex items-center" onClick={handleAllClick}>
                         <img src={blog.src} className="h-7 w-7 mr-1" alt="サイトのアイコン画像" />
                         <Link href="/" className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                            Jam Stack Blog
+                            Tukky Tech Blog
                         </Link>
                     </button>
                 </div>
-            </nav>
+            </header>
             <nav className="bg-gray-100 dark:bg-gray-700">
                 <div className="max-w-screen-xl px-4 pt-2 mx-auto flex justify-between">
                     {!isTop ? (
@@ -81,4 +81,4 @@ const Navbar = (props: NavbarProps) => {
     );
 };
 
-export default Navbar;
+export default Header;

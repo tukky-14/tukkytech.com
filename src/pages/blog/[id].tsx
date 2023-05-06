@@ -1,5 +1,5 @@
 import { client } from '../../libs/client';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Header';
 import dayjs from 'dayjs';
 import { load } from 'cheerio';
 import hljs from 'highlight.js';

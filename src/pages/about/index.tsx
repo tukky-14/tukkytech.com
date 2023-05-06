@@ -1,5 +1,5 @@
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Header';
 import { client } from '../../libs/client';
 
 export default function About() {
@@ -18,19 +18,6 @@ export default function About() {
 
                 <h3>このブログについて</h3>
                 <p>このブログは、Next.js + microCMS で作成しています。</p>
-                <p>
-                    このブログのソースコードは、
-                    <a
-                        className="text-blue-600 hover:underlite"
-                        href="https://github.com/tukky-14/next-microcms-jamstack-blog"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        GitHub
-                    </a>
-                    で公開しています。
-                </p>
-                <p>どうぞごゆっくりご覧くださいませ。</p>
             </div>
             <Footer />
         </div>

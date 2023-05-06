@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
 import Footer from './components/Footer';
 import Link from 'next/link';
-import Navbar from './components/Navbar';
+import Navbar from './components/Header';
+import Header from './components/Header';
 import { client } from '../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
