@@ -11,6 +11,13 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <title>Jam Stack Blog</title>
                 <meta name="description" content="Jam Stackで作成したBlogです。" />
+                <meta property="og:title" content="Jam Stack Blog" />
+                <meta property="og:description" content="Jam Stackで作成したBlogです。" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="" />
+                <meta property="og:image" content="" />
+                <meta property="og:locale" content="ja_JP" />
+                <meta property="og:site_name" content="Jam Stack Blog" />
             </Head>
             <Component {...pageProps} />
         </>
