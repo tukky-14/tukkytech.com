@@ -11,7 +11,6 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <title>Jam Stack Blog</title>
                 <meta name="description" content="Jam Stackで作成したBlogです。" />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
             <Component {...pageProps} />
         </>
