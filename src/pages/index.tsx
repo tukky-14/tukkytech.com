@@ -39,6 +39,7 @@ export default function Home({ blog }: any) {
     return (
         <div>
             <Navbar
+                isTop={true}
                 handleAllClick={handleAllClick}
                 handleTagClick={handleTagClick}
                 handleSearchChange={handleSearchChange}

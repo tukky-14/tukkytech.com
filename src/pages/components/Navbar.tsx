@@ -9,11 +9,11 @@ type NavbarProps = {
     handleAllClick?: () => void;
     handleTagClick?: (e: any) => void;
     handleSearchChange?: (e: any) => void;
-    isDetail?: boolean;
+    isTop?: boolean;
 };
 
 const Navbar = (props: NavbarProps) => {
-    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isDetail } = props;
+    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop } = props;
 
     return (
         <>
@@ -29,7 +29,7 @@ const Navbar = (props: NavbarProps) => {
             </nav>
             <nav className="bg-gray-100 dark:bg-gray-700">
                 <div className="max-w-screen-xl px-4 pt-2 mx-auto flex justify-between">
-                    {isDetail ? (
+                    {!isTop ? (
                         <Link href="/" className="pb-2 flex items-center text-gray-900 dark:text-white hover:underline">
                             <FontAwesomeIcon className="mr-2" icon={faArrowLeft} />
                             記事一覧に戻る
@@ -59,7 +59,7 @@ const Navbar = (props: NavbarProps) => {
                             </ul>
                         </div>
                     )}
-                    {!isDetail && (
+                    {isTop && (
                         <div className="flex sm:order-2">
                             <div className="relative hidden sm:block">
                                 <div className="absolute inset-y-0 -top-2 left-0 flex items-center pl-3 pointer-events-none">
