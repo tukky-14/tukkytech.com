@@ -4,8 +4,8 @@ phases:
         runtime-versions:
             nodejs: 16
         commands:
-            - yarn
-            - yarn build
+            - npm install
+            - npm run build
 artifacts:
     files:
         - '**/*'
