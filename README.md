@@ -1,31 +1,11 @@
-### Jam Stack とは
-
--   Jam は、「JavaScript」「API」「マークアップ言語」の頭文字
--   フロントエンドとバックエンドを API で分割することでそれぞれの役割にフォーカスさせ、Web サイトを高速にできる
+![tukkytechサイトの画像](public/tukkytech.png)
 
 <br/>
 
 ### デプロイ先
 
--   Netlify  
-    https://tukky-jsb.netlify.app/
-
-<br/>
-
-### コミットメッセージ
-
-| 先頭    | 意味                       |
-| ------- | -------------------------- |
-| add     | 新規（ファイル）機能追加   |
-| update  | 機能修正（バグではない）   |
-| clean   | 整理（リファクタリング等） |
-| fix     | バグ修正                   |
-| hotfix  | クリティカルなバグ修正     |
-| change  | 仕様変更                   |
-| disable | 無効化（コメントアウト等） |
-| remove  | 削除（ファイル）           |
-| upgrade | バージョンアップ           |
-| revert  | 変更取り消し               |
+-   AWS S3 × CloudFront  
+    https://tukkytech.com
 
 <br/>
 
