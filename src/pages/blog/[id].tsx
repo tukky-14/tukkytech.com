@@ -1,16 +1,20 @@
-import { client } from '../../libs/client';
-import Navbar from '../components/Header';
 import dayjs from 'dayjs';
-import { load } from 'cheerio';
+import Navbar from '../components/Header';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/hybrid.css';
+import { load } from 'cheerio';
+import { client } from '../../libs/client';
+import { renderToc } from '../../libs/render-toc';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
+import TableOfContents from '../components/TableOfContents';
 
 export default function BlogId({ blog }: any) {
+    const toc = renderToc(blog.body);
+
     return (
         <Container>
             <Navbar isTop={false} />
@@ -27,6 +31,7 @@ export default function BlogId({ blog }: any) {
                             <span>{dayjs(blog.updatedAt).format('YYYY/MM/DD')}</span>
                         </p>
                     </div>
+                    {!!toc.length && <TableOfContents toc={toc} />}
                     <div
                         className="mt-5"
                         dangerouslySetInnerHTML={{

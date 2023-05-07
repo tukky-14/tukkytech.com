@@ -60,7 +60,7 @@ export default function Home({ blog }: any) {
                                     src={blog.image?.url || 'https://picsum.photos/id/24/4855/1803'}
                                     alt="記事のイメージ画像"
                                 />
-                                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <h5 className="mb-2 text-md lg:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {blog.title}
                                 </h5>
                                 <div className="absolute bottom-4">
