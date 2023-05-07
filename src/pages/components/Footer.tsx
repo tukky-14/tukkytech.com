@@ -1,9 +1,7 @@
 import React from 'react';
-import info from '../../images/info.png';
 import github from '../../images/github.png';
 import twitter from '../../images/twitter.png';
 import mail from '../../images/mail.png';
-import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -23,16 +21,6 @@ const Footer = () => {
                         . All Rights Reserved.
                     </span>
                     <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-                        <Link
-                            href="/about"
-                            className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
-                        >
-                            <img
-                                className="h-6 filter grayscale-100 opacity-60"
-                                src={info.src}
-                                alt="インフォメーションのアイコン"
-                            />
-                        </Link>
                         <a
                             href="https://twitter.com/tukkyhistory"
                             className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
