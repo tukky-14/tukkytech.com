@@ -18,6 +18,7 @@ export default function Home({ blog }: any) {
                 .map((blog: any) => blog.tag)
                 .join(',')
                 .split(',')
+                .filter((tag: string) => tag !== 'その他')
                 .sort()
         ),
     ];

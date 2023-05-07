@@ -46,7 +46,7 @@ const Header = (props: HeaderProps) => {
                                     </button>
                                 </li>
                                 {allTags?.map((tag: string) => (
-                                    <li key={tag}>
+                                    <li className="pb-3" key={tag}>
                                         <button
                                             name={tag}
                                             onClick={handleTagClick}
@@ -56,6 +56,15 @@ const Header = (props: HeaderProps) => {
                                         </button>
                                     </li>
                                 ))}
+                                <li className="pb-3">
+                                    <button
+                                        name="その他"
+                                        onClick={handleTagClick}
+                                        className="w-12 text-gray-900 dark:text-white hover:underline"
+                                    >
+                                        その他
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     )}
