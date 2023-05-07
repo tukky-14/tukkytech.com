@@ -8,13 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
+import Container from '../components/Container';
 
 export default function BlogId({ blog }: any) {
     return (
-        <>
+        <Container>
             <Navbar isTop={false} />
-            <div className="max-w-screen-xl mx-auto pt-5">
-                <main className="max-w-screen-md px-4">
+            <div className="max-w-screen-xl mx-auto">
+                <main className="bg-white max-w-screen-md py-5 px-4">
                     <h1 className="text-xl sm:text-2xl font-bold mb-1">{blog.title}</h1>
                     <div className="flex gap-4 leading-6">
                         <p className="flex items-center text-sm text-gray-600">
@@ -35,7 +36,7 @@ export default function BlogId({ blog }: any) {
                 </main>
             </div>
             <Footer />
-        </>
+        </Container>
     );
 }
 

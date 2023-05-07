@@ -27,7 +27,7 @@ const Header = (props: HeaderProps) => {
                     </button>
                 </div>
             </header>
-            <nav className="bg-gray-100 dark:bg-gray-700">
+            <nav className="bg-gray-200 dark:bg-gray-700">
                 <div className="max-w-screen-xl px-4 pt-2 mx-auto flex justify-between">
                     {!isTop ? (
                         <Link href="/" className="pb-2 flex items-center text-gray-900 dark:text-white hover:underline">

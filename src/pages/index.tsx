@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
 import Footer from './components/Footer';
 import Link from 'next/link';
-import Navbar from './components/Header';
 import Header from './components/Header';
 import { client } from '../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import Container from './components/Container';
 
 export default function Home({ blog }: any) {
     console.log('blog:', blog);
@@ -39,8 +39,8 @@ export default function Home({ blog }: any) {
     };
 
     return (
-        <div>
-            <Navbar
+        <Container>
+            <Header
                 isTop={true}
                 handleAllClick={handleAllClick}
                 handleTagClick={handleTagClick}
@@ -89,7 +89,7 @@ export default function Home({ blog }: any) {
                 </ul>
             </div>
             <Footer />
-        </div>
+        </Container>
     );
 }
 
