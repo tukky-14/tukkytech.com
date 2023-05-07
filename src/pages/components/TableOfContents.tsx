@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
     toc: { id: string; text: string }[];
@@ -9,6 +7,10 @@ type Props = {
 
 const TableOfContents = (props: Props) => {
     const { toc } = props;
+
+    if (!toc?.length) {
+        return <></>;
+    }
 
     return (
         <div className="mt-4 text-xs">
