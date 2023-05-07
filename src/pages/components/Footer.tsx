@@ -41,18 +41,6 @@ const Footer = () => {
                                 alt="GitHubのアイコン"
                             />
                         </a>
-                        <a
-                            href="https://github.com/tukky-14"
-                            className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <img
-                                className="h-6 filter grayscale-100 opacity-60"
-                                src={mail.src}
-                                alt="メールのアイコン"
-                            />
-                        </a>
                     </div>
                 </div>
             </div>
