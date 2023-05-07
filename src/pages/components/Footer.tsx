@@ -16,7 +16,7 @@ const Footer = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            tukky
+                            Tukky
                         </a>
                         . All Rights Reserved.
                     </span>
