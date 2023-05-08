@@ -16,8 +16,10 @@ const TableOfContents = (props: Props) => {
         <div className="mt-4 text-xs">
             <ul className="flex flex-col gap-1.5">
                 {toc.map((data) => (
-                    <li className="text-blue-600 hover:underline" key={data.id}>
-                        <Link href={`#${data.id}`}>{data.text}</Link>
+                    <li key={data.id}>
+                        <Link className="text-blue-600 hover:underline" href={`#${data.id}`}>
+                            {data.text}
+                        </Link>
                     </li>
                 ))}
             </ul>
