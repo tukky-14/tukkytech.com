@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import Footer from './components/Footer';
 import Link from 'next/link';
 import Header from './components/Header';
-import { client } from '../libs/client';
+import { getAllContents } from '../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
@@ -95,11 +95,11 @@ export default function Home({ blog }: any) {
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async () => {
-    const data = await client.get({ endpoint: 'blog' });
+    const contents = await getAllContents();
 
     return {
         props: {
-            blog: data.contents,
+            blog: contents,
         },
     };
 };
