@@ -6,7 +6,6 @@ import { getAllContents } from '../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import Container from './components/Container';
 
@@ -77,10 +76,6 @@ export default function Home({ blog }: any) {
                                         <p className="flex items-center text-sm text-gray-600">
                                             <FontAwesomeIcon className="mr-0.5" icon={faCalendarPlus} />
                                             <span>{dayjs(blog.createdAt).format('YYYY/MM/DD')}</span>
-                                        </p>
-                                        <p className="flex items-center text-sm text-gray-600">
-                                            <FontAwesomeIcon className="mr-0.5" icon={faPenToSquare} />
-                                            <span>{dayjs(blog.updatedAt).format('YYYY/MM/DD')}</span>
                                         </p>
                                     </div>
                                 </div>
