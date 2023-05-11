@@ -67,11 +67,9 @@ export default function Home({ blog }: any) {
                                 <div className="absolute bottom-4">
                                     <div className="flex mb-1">
                                         {blog.tag.map((tag: string) => (
-                                            <div className="flex items-center text-cyan-600">
+                                            <div className="flex items-center text-cyan-600" key={tag}>
                                                 <FontAwesomeIcon className="block mb-1" icon={faTag} />
-                                                <span className="inline-block mb-1 ml-0.5 mr-2 text-sm" key={tag}>
-                                                    {tag}
-                                                </span>
+                                                <span className="inline-block mb-1 ml-0.5 mr-2 text-sm">{tag}</span>
                                             </div>
                                         ))}
                                     </div>
