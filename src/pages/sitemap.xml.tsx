@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { getAllContents } from '@/libs/client';
 import { GetServerSidePropsContext } from 'next';
 
-export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
+export const getStaticProps = async ({ res }: GetServerSidePropsContext) => {
     const xml = await generateSitemapXml();
 
     res.statusCode = 200;
