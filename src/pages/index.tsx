@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faTag } from '@fortawesome/free-solid-svg-icons';
 import Container from './components/Container';
 
 export default function Home({ blog }: any) {
@@ -64,14 +65,16 @@ export default function Home({ blog }: any) {
                                     {blog.title}
                                 </h5>
                                 <div className="absolute bottom-4">
-                                    {blog.tag.map((tag: string) => (
-                                        <span
-                                            className="inline-block mb-1 mr-2 py-0.5 px-1.5 text-sm bg-gray-200 rounded"
-                                            key={tag}
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
+                                    <div className="flex mb-1">
+                                        {blog.tag.map((tag: string) => (
+                                            <div className="flex items-center text-cyan-600">
+                                                <FontAwesomeIcon className="block mb-1" icon={faTag} />
+                                                <span className="inline-block mb-1 ml-0.5 mr-2 text-sm" key={tag}>
+                                                    {tag}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
                                     <div className="flex gap-4 leading-6">
                                         <p className="flex items-center text-sm text-gray-600">
                                             <FontAwesomeIcon className="mr-0.5" icon={faCalendarPlus} />
