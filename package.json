@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build && next export",
+        "build": "next build && next export && next-sitemap --config sitemap.config.js",
         "start": "next start",
         "lint": "next lint"
     },
@@ -24,6 +24,7 @@
         "highlight.js": "^11.8.0",
         "microcms-js-sdk": "^2.3.3",
         "next": "13.3.1",
+        "next-sitemap": "^4.0.9",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "typescript": "5.0.4"
