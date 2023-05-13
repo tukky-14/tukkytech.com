@@ -47,7 +47,7 @@ export default function Home({ blog }: any) {
                 handleSearchChange={handleSearchChange}
                 allTags={allTags}
             />
-            <div className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
+            <div id="articles" className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
