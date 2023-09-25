@@ -10,7 +10,6 @@ import { faTag } from '@fortawesome/free-solid-svg-icons';
 import Container from './components/Container';
 
 export default function Home({ blog }: any) {
-    console.log('blog:', blog);
     const allBlog = blog;
     const allTags: any = [
         ...new Set(
@@ -47,7 +46,7 @@ export default function Home({ blog }: any) {
                 handleSearchChange={handleSearchChange}
                 allTags={allTags}
             />
-            <div id="articles" className="mx-auto max-w-screen-xl pt-5 px-2 lg:px-0">
+            <div id="articles" className="mx-auto max-w-screen-xl py-5 px-2 lg:px-0">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
@@ -89,7 +88,7 @@ export default function Home({ blog }: any) {
     );
 }
 
-// データをテンプレートに受け渡す部分の処理を記述します
+// データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
     const contents = await getAllContents();
 
