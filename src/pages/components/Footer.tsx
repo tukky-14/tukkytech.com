@@ -1,7 +1,6 @@
 import React from 'react';
 import github from '../../images/github.png';
 import twitter from '../../images/twitter.png';
-import mail from '../../images/mail.png';
 
 const Footer = () => {
     return (
