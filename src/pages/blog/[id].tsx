@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import Navbar from '../components/Header';
+import Header from '../components/Header';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/hybrid.css';
 import { load } from 'cheerio';
@@ -17,7 +17,7 @@ export default function BlogId({ blog }: any) {
 
     return (
         <Container>
-            <Navbar isTop={false} />
+            <Header isTop={false} isBlogPage={true} />
             <div className="max-w-screen-xl mx-auto">
                 <main className="bg-white max-w-screen-md py-5 px-4">
                     <h1 className="text-xl sm:text-2xl font-bold mb-2">{blog.title}</h1>
