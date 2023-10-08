@@ -47,8 +47,8 @@ export default function Home({ blog }: any) {
                 allTags={allTags}
                 isBlogPage={true}
             />
-            <div id="articles" className="mx-auto max-w-screen-xl py-5 px-4 lg:px-0">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div id="articles" className="mx-auto max-w-screen-xl py-5 lg:px-0">
+                <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
                             <Link
