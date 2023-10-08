@@ -53,9 +53,17 @@ export default function Links({ links }: any) {
 export const getStaticProps = async () => {
     const contents = await getAllLinks();
 
+    // アルファベット順に並び替え（大文字小文字を区別しない）
+    const sortedContents = contents.sort((a: any, b: any) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+
+        return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+    });
+
     return {
         props: {
-            links: contents,
+            links: sortedContents,
         },
     };
 };
