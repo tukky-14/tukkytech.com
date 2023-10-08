@@ -19,8 +19,8 @@ export default function Links({ links }: any) {
     return (
         <Container>
             <Header isBlogPage={false} />
-            <div id="links" className="mx-auto max-w-screen-xl py-5 px-4 lg:px-0">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 dark:text-white">
+            <div id="links" className="mx-auto max-w-screen-xl py-5 lg:px-0">
+                <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 dark:text-white">
                     {allLinks.map((link: LinkProps) => (
                         <li key={link.title} className="hover:scale-105 duration-300">
                             <a
