@@ -5,9 +5,21 @@ export const client = createClient({
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
 });
 
-export const getAllContents = async (limit = 100, offset = 0) => {
+export const getAllBlogs = async (limit = 100, offset = 0) => {
     const data = await client.get({
         endpoint: 'blog',
+        queries: {
+            offset,
+            limit,
+        },
+    });
+
+    return data.contents;
+};
+
+export const getAllLinks = async (limit = 100, offset = 0) => {
+    const data = await client.get({
+        endpoint: 'links',
         queries: {
             offset,
             limit,

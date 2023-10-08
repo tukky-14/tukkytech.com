@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import Footer from './components/Footer';
 import Link from 'next/link';
 import Header from './components/Header';
-import { getAllContents } from '../libs/client';
+import { getAllBlogs } from '../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
@@ -45,6 +45,7 @@ export default function Home({ blog }: any) {
                 handleTagClick={handleTagClick}
                 handleSearchChange={handleSearchChange}
                 allTags={allTags}
+                isBlogPage={true}
             />
             <div id="articles" className="mx-auto max-w-screen-xl py-5 px-2 lg:px-0">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -90,7 +91,7 @@ export default function Home({ blog }: any) {
 
 // データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
-    const contents = await getAllContents();
+    const contents = await getAllBlogs();
 
     return {
         props: {

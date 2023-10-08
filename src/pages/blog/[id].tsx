@@ -3,7 +3,7 @@ import Navbar from '../components/Header';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/hybrid.css';
 import { load } from 'cheerio';
-import { client, getAllContents } from '../../libs/client';
+import { client, getAllBlogs } from '../../libs/client';
 import { renderToc } from '../../libs/render-toc';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
@@ -47,7 +47,7 @@ export default function BlogId({ blog }: any) {
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
-    const contents = await getAllContents();
+    const contents = await getAllBlogs();
 
     const paths = contents.map((content: { id: string }) => `/blog/${content.id}`);
     return { paths, fallback: false };

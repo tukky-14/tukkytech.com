@@ -10,10 +10,11 @@ type HeaderProps = {
     handleTagClick?: (e: any) => void;
     handleSearchChange?: (e: any) => void;
     isTop?: boolean;
+    isBlogPage?: boolean;
 };
 
 const Header = (props: HeaderProps) => {
-    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop } = props;
+    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop, isBlogPage } = props;
 
     return (
         <>
@@ -26,21 +27,23 @@ const Header = (props: HeaderProps) => {
                         </Link>
                     </button>
                     <Link
-                        href="/devlinks"
-                        className="hidden pt-2 pb-2 flex items-center text-xs sm:text-sm text-gray-900 dark:text-white hover:text-cyan-600"
+                        href="/links"
+                        className="pt-2 pb-2 flex items-center text-xs sm:text-sm text-gray-900 dark:text-white hover:text-cyan-600"
                     >
                         <FontAwesomeIcon className="mr-1" icon={faPaperclip} />
                         <p>開発リンク集</p>
                     </Link>
                 </div>
             </header>
-            <NavbarBase
-                allTags={allTags}
-                handleAllClick={handleAllClick}
-                handleTagClick={handleTagClick}
-                handleSearchChange={handleSearchChange}
-                isTop={isTop}
-            />
+            {isBlogPage && (
+                <NavbarBase
+                    allTags={allTags}
+                    handleAllClick={handleAllClick}
+                    handleTagClick={handleTagClick}
+                    handleSearchChange={handleSearchChange}
+                    isTop={isTop}
+                />
+            )}
         </>
     );
 };
