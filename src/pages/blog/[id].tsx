@@ -17,7 +17,7 @@ export default function BlogId({ blog }: any) {
 
     return (
         <Container>
-            <Header isTop={false} isBlogPage={true} />
+            <Header isTop={false} />
             <div className="max-w-screen-xl mx-auto">
                 <main className="bg-white max-w-screen-md py-5 px-4">
                     <h1 className="text-xl sm:text-2xl font-bold mb-2">{blog.title}</h1>
