@@ -10,11 +10,10 @@ type HeaderProps = {
     handleTagClick?: (e: any) => void;
     handleSearchChange?: (e: any) => void;
     isTop?: boolean;
-    isBlogPage?: boolean;
 };
 
 const Header = (props: HeaderProps) => {
-    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop, isBlogPage } = props;
+    const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop } = props;
 
     return (
         <>
@@ -35,15 +34,13 @@ const Header = (props: HeaderProps) => {
                     </Link>
                 </div>
             </header>
-            {isBlogPage && (
-                <NavbarBase
-                    allTags={allTags}
-                    handleAllClick={handleAllClick}
-                    handleTagClick={handleTagClick}
-                    handleSearchChange={handleSearchChange}
-                    isTop={isTop}
-                />
-            )}
+            <NavbarBase
+                allTags={allTags}
+                handleAllClick={handleAllClick}
+                handleTagClick={handleTagClick}
+                handleSearchChange={handleSearchChange}
+                isTop={isTop}
+            />
         </>
     );
 };
