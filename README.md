@@ -1,4 +1,4 @@
-![tukkytechサイトの画像](public/tukkytech.png)
+![tukkytechサイトの画像](public/tukkytech-top.png)
 
 <br/>
 
