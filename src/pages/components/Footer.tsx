@@ -1,8 +1,7 @@
-import React from 'react';
-import github from '../../images/github.png';
-import twitter from '../../images/twitter.png';
-import words from '../../images/words.png';
 import Link from 'next/link';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 
 const Footer = () => {
     return (
@@ -26,7 +25,7 @@ const Footer = () => {
                             href="/words"
                             className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
-                            <img className="h-6 filter grayscale-100" src={words.src} alt="ことばのアイコン" />
+                            <EnergySavingsLeafIcon />
                         </Link>
                         <a
                             href="https://twitter.com/tukkyhistory"
@@ -34,7 +33,7 @@ const Footer = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img className="h-6 filter grayscale-100" src={twitter.src} alt="Twitterのアイコン" />
+                            <TwitterIcon />
                         </a>
                         <a
                             href="https://github.com/tukky-14"
@@ -42,11 +41,7 @@ const Footer = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
-                                className="h-6 filter grayscale-100 opacity-60"
-                                src={github.src}
-                                alt="GitHubのアイコン"
-                            />
+                            <GitHubIcon />
                         </a>
                     </div>
                 </div>
