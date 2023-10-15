@@ -1,6 +1,8 @@
 import React from 'react';
 import github from '../../images/github.png';
 import twitter from '../../images/twitter.png';
+import words from '../../images/words.png';
+import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -20,6 +22,12 @@ const Footer = () => {
                         . All Rights Reserved.
                     </span>
                     <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+                        <Link
+                            href="/words"
+                            className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                        >
+                            <img className="h-6 filter grayscale-100" src={words.src} alt="ことばのアイコン" />
+                        </Link>
                         <a
                             href="https://twitter.com/tukkyhistory"
                             className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
