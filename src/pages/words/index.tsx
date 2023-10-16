@@ -1,16 +1,21 @@
-// 画像サイズ → 640x400
-
+import { useState } from 'react'; // 追加
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import itgirl from '../../images/itgirl.png';
+import itgirl_description from '../../images/itgirl_description.png';
 import axios from 'axios';
-
-type WordProps = {};
 
 export default function Words({ words }: any) {
     const allWords = words;
-    console.log('allWords:', allWords);
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState('');
+
+    // wordをクリックしたときのハンドラ
+    const handleWordClick = (description: string) => {
+        setModalContent(description);
+        setShowModal(true);
+    };
 
     return (
         <Container>
@@ -23,16 +28,31 @@ export default function Words({ words }: any) {
                 <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {allWords.map((word: any) => (
                         <li key={word.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
-                            <a href={word.url} target="_blank" rel="noopener noreferrer">
+                            <a href="#" onClick={() => handleWordClick(word.description)}>
                                 <div className="p-4">
-                                    <div className="text-xl font-semibold">{word.title}</div>
-                                    <div className="text-sm">{word.description}</div>
+                                    <div className="text-md font-semibold">{word.title}</div>
                                 </div>
                             </a>
                         </li>
                     ))}
                 </ul>
             </div>
+            {showModal && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                    onClick={() => setShowModal(false)}
+                >
+                    <div
+                        className="w-full sm:w-2/3 bg-white mx-4 p-4 rounded-lg"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <div className="w-full h-96 overflow-scroll sm:h-auto sm:flex">
+                            <img className="h-40 rounded mb-2" src={itgirl_description.src} alt="ITガールのアイコン" />
+                            <p className="px-2">{modalContent}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
             <Footer />
         </Container>
     );
