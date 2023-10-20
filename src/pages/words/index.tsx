@@ -13,7 +13,7 @@ export default function Words({ words }: any) {
 
     // wordをクリックしたときのハンドラ
     const handleWordClick = (description: string) => {
-        setModalContent(description);
+        setModalContent(description.replaceAll('\n', '<br>'));
         setShowModal(true);
     };
 
@@ -27,7 +27,10 @@ export default function Words({ words }: any) {
                 </div>
                 <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {allWords.map((word: any) => (
-                        <li key={word.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <li
+                            key={word.id}
+                            className="bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 duration-300"
+                        >
                             <a href="#" onClick={() => handleWordClick(word.description)}>
                                 <div className="p-4">
                                     <div className="text-md font-semibold">{word.title}</div>
@@ -48,7 +51,7 @@ export default function Words({ words }: any) {
                     >
                         <div className="w-full h-96 overflow-scroll sm:h-auto sm:flex">
                             <img className="h-40 rounded mb-2" src={itgirl_description.src} alt="ITガールのアイコン" />
-                            <p className="px-2">{modalContent}</p>
+                            <div className="px-2" dangerouslySetInnerHTML={{ __html: modalContent }} />
                         </div>
                     </div>
                 </div>
