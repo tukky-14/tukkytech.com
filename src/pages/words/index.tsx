@@ -10,11 +10,19 @@ export default function Words({ words }: any) {
     const allWords = words;
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
+    const [scrollPosition, setScrollPosition] = useState(0);
 
     // wordをクリックしたときのハンドラ
     const handleWordClick = (description: string) => {
+        setScrollPosition(window.scrollY);
         setModalContent(description.replaceAll('\n', '<br>'));
         setShowModal(true);
+    };
+
+    // モーダルを閉じるときのハンドラ
+    const handleCloseModal = () => {
+        setShowModal(false);
+        window.scrollTo(0, scrollPosition);
     };
 
     return (
@@ -43,15 +51,15 @@ export default function Words({ words }: any) {
             {showModal && (
                 <div
                     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-                    onClick={() => setShowModal(false)}
+                    onClick={handleCloseModal}
                 >
                     <div
-                        className="w-full sm:w-2/3 bg-white mx-4 p-4 rounded-lg"
+                        className="w-full sm:w-3/4 bg-white mx-4 p-4 rounded-lg"
                         onClick={(event) => event.stopPropagation()}
                     >
                         <div className="w-full h-96 overflow-scroll sm:h-auto sm:flex">
                             <img className="h-40 rounded mb-2" src={itgirl_description.src} alt="ITガールのアイコン" />
-                            <div className="px-2" dangerouslySetInnerHTML={{ __html: modalContent }} />
+                            <div className="px-4" dangerouslySetInnerHTML={{ __html: modalContent }} />
                         </div>
                     </div>
                 </div>
