@@ -1,9 +1,9 @@
-import { data } from 'cheerio/lib/api/attributes';
-import { table } from 'console';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { useState } from 'react';
@@ -16,17 +16,18 @@ export type TestInfo = {
 
 export default function Words2({ words }: any) {
     const allWords = words;
-    console.log('allWords:', allWords);
-
     const [data, setData] = useState(() => [...allWords]);
-    const [selectRowData, setSelectRowData] = useState<TestInfo | null>(null);
 
     const columnHelper = createColumnHelper<TestInfo>();
 
     const columns = [
         columnHelper.accessor('id', {
-            cell: (info) => <div className="text-right">{info.getValue()}</div>,
-            header: 'ID',
+            cell: (info) => (
+                <button className="">
+                    <FontAwesomeIcon className="text-blue-600" icon={faCircleInfo} />
+                </button>
+            ),
+            header: '',
         }),
         columnHelper.accessor('title', {
             cell: (info) => <div className="">{info.getValue()}</div>,
@@ -37,11 +38,11 @@ export default function Words2({ words }: any) {
                 const description = info.row.original.description;
                 return (
                     <div className="inline-block">
-                        {description.length > 50 ? description.substring(0, 50) + '...' : description}
+                        {description.length > 60 ? description.substring(0, 60) + '...' : description}
                     </div>
                 );
             },
-            header: '概要',
+            header: '解説',
             id: 'description',
         }),
     ];
@@ -63,7 +64,10 @@ export default function Words2({ words }: any) {
                             {table.getHeaderGroups().map((headerGroup) => (
                                 <tr key={headerGroup.id}>
                                     {headerGroup.headers.map((header) => (
-                                        <th className="border bg-blue-50 px-2" key={header.id}>
+                                        <th
+                                            className="border bg-cyan-600 px-2 py-2 text-lg font-bold text-white"
+                                            key={header.id}
+                                        >
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(header.column.columnDef.header, header.getContext())}
