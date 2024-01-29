@@ -81,7 +81,7 @@ export default function Words2({ words }: any) {
             <div className="mx-auto max-w-screen-xl px-4">
                 <div className="my-4 flex items-center gap-1 text-xl font-bold">
                     <img className="h-10" src={itgirl.src} alt="ITガールのアイコン" />
-                    <span>ITアシスタントガールのIT用語解説</span>
+                    <span>ITアシスタントの用語解説</span>
                 </div>
                 <div className="flex-col gap-8">
                     <table className="mb-4">
