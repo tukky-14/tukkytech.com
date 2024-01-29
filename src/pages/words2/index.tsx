@@ -2,6 +2,7 @@ import Container from '../components/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import axios from 'axios';
+import itgirl from '../../images/itgirl.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
@@ -40,7 +41,15 @@ export default function Words2({ words }: any) {
                 const description = info.row.original.description;
                 return (
                     <div className="inline-block">
-                        {description.length > 60 ? description.substring(0, 60) + '...' : description}
+                        {description.length > 60 ? description.substring(0, 60) : description}
+                        {description.length > 60 && (
+                            <button
+                                className="font-bold text-blue-600"
+                                onClick={() => handleWordClick(info.row.original.description)}
+                            >
+                                ...
+                            </button>
+                        )}
                     </div>
                 );
             },
@@ -70,7 +79,10 @@ export default function Words2({ words }: any) {
         <Container>
             <Header />
             <div className="mx-auto max-w-screen-xl px-4">
-                <div className="my-4 text-xl font-bold">IT用語解説</div>
+                <div className="my-4 flex items-center gap-1 text-xl font-bold">
+                    <img className="h-10" src={itgirl.src} alt="ITガールのアイコン" />
+                    <span>ITアシスタントガールのIT用語解説</span>
+                </div>
                 <div className="flex-col gap-8">
                     <table className="mb-4">
                         <thead>
@@ -113,7 +125,7 @@ export default function Words2({ words }: any) {
                         className="mx-4 w-full rounded-lg bg-white p-4 sm:w-3/4"
                         onClick={(event) => event.stopPropagation()}
                     >
-                        <div className="h-96 w-full overflow-scroll sm:flex sm:h-auto">
+                        <div className="max-h-96 w-full overflow-scroll sm:flex sm:h-auto">
                             <div className="px-4" dangerouslySetInnerHTML={{ __html: modalContent }} />
                         </div>
                     </div>
