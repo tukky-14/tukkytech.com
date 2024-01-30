@@ -1,20 +1,71 @@
-import { useState } from 'react'; // 追加
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import itgirl from '../../images/itgirl.png';
-import itgirl_description from '../../images/itgirl_description.png';
 import axios from 'axios';
+import itgirl from '../../images/itgirl.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+
+import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { useState } from 'react';
+
+export type TestInfo = {
+    description: string;
+    id: string;
+    title: string;
+};
 
 export default function Words({ words }: any) {
     const allWords = words;
+    const [data, setData] = useState(() => [...allWords]);
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
-    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const columnHelper = createColumnHelper<TestInfo>();
+
+    const columns = [
+        columnHelper.accessor('id', {
+            cell: (info) => (
+                <button className="" onClick={() => handleWordClick(info.row.original.description)}>
+                    <FontAwesomeIcon className="text-blue-600" icon={faCircleInfo} />
+                </button>
+            ),
+            header: '',
+        }),
+        columnHelper.accessor('title', {
+            cell: (info) => <div className="">{info.getValue()}</div>,
+            header: '用語',
+        }),
+        columnHelper.display({
+            cell: (info) => {
+                const description = info.row.original.description;
+                return (
+                    <div className="inline-block">
+                        {description.length > 60 ? description.substring(0, 60) : description}
+                        {description.length > 60 && (
+                            <button
+                                className="font-bold text-blue-600"
+                                onClick={() => handleWordClick(info.row.original.description)}
+                            >
+                                ...
+                            </button>
+                        )}
+                    </div>
+                );
+            },
+            header: '解説',
+            id: 'description',
+        }),
+    ];
+
+    const table = useReactTable({
+        columns,
+        data,
+        getCoreRowModel: getCoreRowModel(),
+    });
 
     // wordをクリックしたときのハンドラ
     const handleWordClick = (description: string) => {
-        setScrollPosition(window.scrollY);
         setModalContent(description.replaceAll('\n', '<br>'));
         setShowModal(true);
     };
@@ -22,43 +73,59 @@ export default function Words({ words }: any) {
     // モーダルを閉じるときのハンドラ
     const handleCloseModal = () => {
         setShowModal(false);
-        window.scrollTo(0, scrollPosition);
     };
 
     return (
         <Container>
             <Header />
-            <div id="words" className="mb-4 mx-auto max-w-screen-xl lg:px-0">
-                <div className="px-4 mb-4 w-full flex items-center gap-4 bg-cyan-50">
-                    <img className="h-20 " src={itgirl.src} alt="ITガールのアイコン" />
-                    <div className="text-2xl">ITアシスタントガールのIT用語解説</div>
+            <div className="mx-auto max-w-screen-xl px-4">
+                <div className="my-4 flex items-center gap-1 text-xl font-bold">
+                    <img className="h-10" src={itgirl.src} alt="ITガールのアイコン" />
+                    <span>ITアシスタントの用語解説</span>
                 </div>
-                <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {allWords.map((word: any) => (
-                        <li
-                            key={word.id}
-                            className="bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 duration-300"
-                        >
-                            <a href="#" onClick={() => handleWordClick(word.description)}>
-                                <div className="p-4">
-                                    <div className="text-md font-semibold">{word.title}</div>
-                                </div>
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <div className="flex-col gap-8">
+                    <table className="mb-4">
+                        <thead>
+                            {table.getHeaderGroups().map((headerGroup) => (
+                                <tr key={headerGroup.id}>
+                                    {headerGroup.headers.map((header) => (
+                                        <th
+                                            className="border bg-cyan-600 px-2 py-2 text-lg font-bold text-white"
+                                            key={header.id}
+                                        >
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(header.column.columnDef.header, header.getContext())}
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        <tbody>
+                            {table.getRowModel().rows.map((row) => (
+                                <tr key={row.id}>
+                                    {row.getVisibleCells().map((cell) => (
+                                        <td className="border px-1 py-2" key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
             {showModal && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
                     onClick={handleCloseModal}
                 >
                     <div
-                        className="w-full sm:w-3/4 bg-white mx-4 p-4 rounded-lg"
+                        className="mx-4 w-full rounded-lg bg-white p-4 sm:w-3/4"
                         onClick={(event) => event.stopPropagation()}
                     >
-                        <div className="w-full h-96 overflow-scroll sm:h-auto sm:flex">
-                            <img className="h-40 rounded mb-2" src={itgirl_description.src} alt="ITガールのアイコン" />
+                        <div className="max-h-96 w-full overflow-scroll sm:flex sm:h-auto">
                             <div className="px-4" dangerouslySetInnerHTML={{ __html: modalContent }} />
                         </div>
                     </div>
@@ -68,7 +135,6 @@ export default function Words({ words }: any) {
         </Container>
     );
 }
-
 export const getStaticProps = async () => {
     const { data } = await axios.get(process.env.NEXT_PUBLIC_ITWORDS_APIENDPOINT || '');
 
