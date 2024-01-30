@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/hybrid.css';
 import { load } from 'cheerio';
@@ -8,9 +8,9 @@ import { renderToc } from '../../libs/render-toc';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../components/Footer';
-import Container from '../components/Container';
-import TableOfContents from '../components/TableOfContents';
+import Footer from '../../components/Footer';
+import Container from '../../components/Container';
+import TableOfContents from '../../components/TableOfContents';
 
 export default function BlogId({ blog }: any) {
     const toc = renderToc(blog.body);
@@ -18,9 +18,9 @@ export default function BlogId({ blog }: any) {
     return (
         <Container>
             <Header isTop={false} />
-            <div className="max-w-screen-xl mx-auto">
-                <main className="bg-white max-w-screen-md py-5 px-4">
-                    <h1 className="text-xl sm:text-2xl font-bold mb-2">{blog.title}</h1>
+            <div className="mx-auto max-w-screen-xl">
+                <main className="max-w-screen-md bg-white px-4 py-5">
+                    <h1 className="mb-2 text-xl font-bold sm:text-2xl">{blog.title}</h1>
                     <div className="flex gap-4 leading-6">
                         <p className="flex items-center text-sm text-gray-600">
                             <FontAwesomeIcon className="mr-0.5" icon={faCalendarPlus} />

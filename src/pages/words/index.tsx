@@ -1,6 +1,6 @@
-import Container from '../components/Container';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import axios from 'axios';
 import itgirl from '../../images/itgirl.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

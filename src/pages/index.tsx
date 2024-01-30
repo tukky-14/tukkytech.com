@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 import Link from 'next/link';
-import Header from './components/Header';
+import Header from '../components/Header';
 import { getAllBlogs } from '../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
-import Container from './components/Container';
+import Container from '../components/Container';
 
 export default function Home({ blog }: any) {
     const allBlog = blog;
@@ -47,27 +47,27 @@ export default function Home({ blog }: any) {
                 allTags={allTags}
             />
             <div id="articles" className="mx-auto max-w-screen-xl py-5 lg:px-0">
-                <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <ul className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
                             <Link
-                                className="relative block h-[22rem] max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                                className="relative block h-[22rem] max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
                                 href={`/blog/${blog.id}`}
                             >
                                 <img
-                                    className="mb-4 w-full h-[150px]"
+                                    className="mb-4 h-[150px] w-full"
                                     src={blog.image?.url || 'https://picsum.photos/id/24/4855/1803'}
                                     alt="記事のイメージ画像"
                                 />
-                                <h5 className="mb-2 text-md lg:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <h5 className="text-md mb-2 font-bold tracking-tight text-gray-900 dark:text-white lg:text-xl">
                                     {blog.title}
                                 </h5>
                                 <div className="absolute bottom-4">
-                                    <div className="flex mb-1">
+                                    <div className="mb-1 flex">
                                         {blog.tag.map((tag: string) => (
                                             <div className="flex items-center text-cyan-600" key={tag}>
-                                                <FontAwesomeIcon className="block mb-1" icon={faTag} />
-                                                <span className="inline-block mb-1 ml-0.5 mr-2 text-sm">{tag}</span>
+                                                <FontAwesomeIcon className="mb-1 block" icon={faTag} />
+                                                <span className="mb-1 ml-0.5 mr-2 inline-block text-sm">{tag}</span>
                                             </div>
                                         ))}
                                     </div>

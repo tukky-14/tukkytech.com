@@ -1,8 +1,8 @@
 // 画像サイズ → 640x400
 
-import Container from '../components/Container';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import { getAllLinks } from '../../libs/client';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -60,11 +60,11 @@ export default function Links({ links }: any) {
                 allTags={allTags}
             />
             <div id="links" className="mx-auto max-w-screen-xl py-5 lg:px-0">
-                <ul className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 dark:text-white">
+                <ul className="grid grid-cols-1 gap-4 px-4 dark:text-white sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {filterLinks.map((link: LinkProps) => (
-                        <li key={link.title} className="hover:scale-105 duration-300">
+                        <li key={link.title} className="duration-300 hover:scale-105">
                             <a
-                                className="relative block h-[20rem] sm:h-[18rem] max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                className="relative block h-[20rem] max-w-sm rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 sm:h-[18rem]"
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -75,15 +75,15 @@ export default function Links({ links }: any) {
                                     alt={link.title}
                                 />
                                 <div className="px-2">
-                                    <div className="mb-0.5 text-md font-bold">{link.title}</div>
+                                    <div className="text-md mb-0.5 font-bold">{link.title}</div>
                                     <div className="mb-0.5 text-xs text-gray-600 dark:text-gray-300">
                                         {link.description}
                                     </div>
-                                    <div className="flex mb-1 absolute bottom-0 right-0">
+                                    <div className="absolute bottom-0 right-0 mb-1 flex">
                                         {link.tag?.map((tag: string) => (
-                                            <div className="flex items-center text-cyan-600 text-xs" key={tag}>
-                                                <FontAwesomeIcon className="block mb-1" icon={faTag} />
-                                                <span className="inline-block mb-1 ml-0.5 mr-2">{tag}</span>
+                                            <div className="flex items-center text-xs text-cyan-600" key={tag}>
+                                                <FontAwesomeIcon className="mb-1 block" icon={faTag} />
+                                                <span className="mb-1 ml-0.5 mr-2 inline-block">{tag}</span>
                                             </div>
                                         ))}
                                     </div>
