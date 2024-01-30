@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html lang="ja">
             <Head>
-                <title>Tukky Tech Blog</title>
                 <meta name="description" content="Jam Stackで作成した技術ブログです。" />
                 <meta property="og:title" content="Tukky Tech Blog" />
                 <meta property="og:type" content="website" />
