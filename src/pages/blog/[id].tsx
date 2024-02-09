@@ -1,16 +1,18 @@
-import dayjs from 'dayjs';
-import Header from '../../components/Header';
-import hljs from 'highlight.js';
+/* eslint @typescript-eslint/no-explicit-any: warn */
+
 import 'highlight.js/styles/hybrid.css';
+import { faCalendarPlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { load } from 'cheerio';
+import dayjs from 'dayjs';
+import hljs from 'highlight.js';
+
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import TableOfContents from '../../components/TableOfContents';
 import { client, getAllBlogs } from '../../libs/client';
 import { renderToc } from '../../libs/render-toc';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../../components/Footer';
-import Container from '../../components/Container';
-import TableOfContents from '../../components/TableOfContents';
 
 export default function BlogId({ blog }: any) {
     const toc = renderToc(blog.body);

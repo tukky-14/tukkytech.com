@@ -1,16 +1,22 @@
+/* eslint @typescript-eslint/no-explicit-any: warn */
+
 import '@/styles/globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import * as gtag from '../libs/gtag';
+import { useEffect } from 'react';
+
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+
+import * as gtag from '../libs/gtag';
+
 import type { AppProps } from 'next/app';
 config.autoAddCss = false;
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     useEffect(() => {
-        const handleRouterChange = (url: any) => {
+        const handleRouterChange = (url: string) => {
+            // Specify the type as string
             gtag.pageview(url);
         };
         router.events.on('routeChangeComplete', handleRouterChange);

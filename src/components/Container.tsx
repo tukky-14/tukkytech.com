@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import CommonHead from './CommonHead';
 
 type Props = {

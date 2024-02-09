@@ -1,12 +1,15 @@
+/* eslint @typescript-eslint/no-explicit-any: warn */
 // 画像サイズ → 640x400
+
+import { useState } from 'react';
+
+import { faTag } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { getAllLinks } from '../../libs/client';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTag } from '@fortawesome/free-solid-svg-icons';
 
 type LinkProps = {
     image?: any;
@@ -53,26 +56,26 @@ export default function Links({ links }: any) {
     return (
         <Container>
             <Header
-                isTop={true}
-                handleAllClick={handleAllClick}
-                handleTagClick={handleTagClick}
-                handleSearchChange={handleSearchChange}
                 allTags={allTags}
+                handleAllClick={handleAllClick}
+                handleSearchChange={handleSearchChange}
+                handleTagClick={handleTagClick}
+                isTop={true}
             />
-            <div id="links" className="mx-auto max-w-screen-xl py-5 lg:px-0">
-                <ul className="grid grid-cols-1 gap-4 px-4 dark:text-white sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="mx-auto max-w-screen-xl py-5 lg:px-0" id="links">
+                <ul className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 dark:text-white">
                     {filterLinks.map((link: LinkProps) => (
-                        <li key={link.title} className="duration-300 hover:scale-105">
+                        <li className="duration-300 hover:scale-105" key={link.title}>
                             <a
-                                className="relative block h-[20rem] max-w-sm rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 sm:h-[18rem]"
+                                className="relative block h-[20rem] max-w-sm rounded-lg border border-gray-200 bg-white shadow-md sm:h-[18rem] dark:border-gray-700 dark:bg-gray-800"
                                 href={link.url}
-                                target="_blank"
                                 rel="noopener noreferrer"
+                                target="_blank"
                             >
                                 <img
+                                    alt={link.title}
                                     className="mb-1.5 w-full rounded-t-lg border-b border-gray-200"
                                     src={link.image?.url}
-                                    alt={link.title}
                                 />
                                 <div className="px-2">
                                     <div className="text-md mb-0.5 font-bold">{link.title}</div>

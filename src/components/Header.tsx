@@ -1,14 +1,16 @@
-import Link from 'next/link';
-import blog from '../images/blog.png';
-import NavbarBase from './NavbarBase';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+
+import blog from '../images/blog.png';
+
+import NavbarBase from './NavbarBase';
 
 type HeaderProps = {
     allTags?: string[];
     handleAllClick?: () => void;
-    handleTagClick?: (e: any) => void;
-    handleSearchChange?: (e: any) => void;
+    handleTagClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    handleSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     isTop?: boolean;
 };
 
@@ -20,14 +22,14 @@ const Header = (props: HeaderProps) => {
             <header className="border-gray-200 bg-white dark:bg-gray-900 dark:text-white">
                 <div className="mx-auto flex max-w-screen-xl items-center justify-between p-4">
                     <button className="flex items-center" onClick={handleAllClick}>
-                        <img src={blog.src} className="mr-1 h-7 w-7" alt="サイトのアイコン画像" />
-                        <Link href="/" className="self-center whitespace-nowrap text-2xl font-semibold">
+                        <img alt="サイトのアイコン画像" className="mr-1 h-7 w-7" src={blog.src} />
+                        <Link className="self-center whitespace-nowrap text-2xl font-semibold" href="/">
                             Tukky Tech Blog
                         </Link>
                     </button>
                     <Link
+                        className="flex items-center pb-2 pt-2 text-xs text-gray-900 hover:text-cyan-600 sm:text-sm dark:text-white"
                         href="/links"
-                        className="flex items-center pb-2 pt-2 text-xs text-gray-900 hover:text-cyan-600 dark:text-white sm:text-sm"
                     >
                         <FontAwesomeIcon className="mr-1" icon={faPaperclip} />
                         <p>開発リンク集</p>
@@ -37,8 +39,8 @@ const Header = (props: HeaderProps) => {
             <NavbarBase
                 allTags={allTags}
                 handleAllClick={handleAllClick}
-                handleTagClick={handleTagClick}
                 handleSearchChange={handleSearchChange}
+                handleTagClick={handleTagClick}
                 isTop={isTop}
             />
         </>

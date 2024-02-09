@@ -4,7 +4,7 @@ export default function Custom404() {
     return (
         <main className="main">
             <p>ページがありません。</p>
-            <Link href="/" className="text-cyan-600 hover:underline">
+            <Link className="text-cyan-600 hover:underline" href="/">
                 ホームに戻る
             </Link>
         </main>

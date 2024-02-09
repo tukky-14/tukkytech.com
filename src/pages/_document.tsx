@@ -4,18 +4,18 @@ export default function Document() {
     return (
         <Html lang="ja">
             <Head>
-                <meta name="description" content="Jam Stackで作成した技術ブログです。" />
-                <meta property="og:title" content="Tukky Tech Blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://tukkytech.com/" />
-                <meta property="og:image" content="/tukkytech-top.png" />
-                <meta property="og:site_name" content="Tukky Tech Blog" />
-                <meta property="og:locale" content="ja_JP" />
-                <meta property="og:description" content="Jam Stackで作成した技術ブログです。" />
-                <meta name="apple-mobile-web-app-capable" content="yes" />
-                <meta name="mobile-web-app-capable" content="yes" />
-                <link rel="icon" href="/icon_16.png" />
-                <link rel="apple-touch-icon" sizes="192x192" href="/icon_192.png" />
+                <meta content="Jam Stackで作成した技術ブログです。" name="description" />
+                <meta content="Tukky Tech Blog" property="og:title" />
+                <meta content="website" property="og:type" />
+                <meta content="https://tukkytech.com/" property="og:url" />
+                <meta content="/tukkytech-top.png" property="og:image" />
+                <meta content="Tukky Tech Blog" property="og:site_name" />
+                <meta content="ja_JP" property="og:locale" />
+                <meta content="Jam Stackで作成した技術ブログです。" property="og:description" />
+                <meta content="yes" name="apple-mobile-web-app-capable" />
+                <meta content="yes" name="mobile-web-app-capable" />
+                <link href="/icon_16.png" rel="icon" />
+                <link href="/icon_192.png" rel="apple-touch-icon" sizes="192x192" />
             </Head>
             <body>
                 <Main />

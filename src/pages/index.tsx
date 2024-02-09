@@ -1,13 +1,16 @@
+/* eslint @typescript-eslint/no-explicit-any: warn */
+
+import { useState } from 'react';
+
+import { faCalendarPlus, faTag } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import dayjs from 'dayjs';
-import Footer from '../components/Footer';
 import Link from 'next/link';
+
+import Container from '../components/Container';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getAllBlogs } from '../libs/client';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
-import { faTag } from '@fortawesome/free-solid-svg-icons';
-import Container from '../components/Container';
 
 export default function Home({ blog }: any) {
     const allBlog = blog;
@@ -40,13 +43,13 @@ export default function Home({ blog }: any) {
     return (
         <Container>
             <Header
-                isTop={true}
-                handleAllClick={handleAllClick}
-                handleTagClick={handleTagClick}
-                handleSearchChange={handleSearchChange}
                 allTags={allTags}
+                handleAllClick={handleAllClick}
+                handleSearchChange={handleSearchChange}
+                handleTagClick={handleTagClick}
+                isTop={true}
             />
-            <div id="articles" className="mx-auto max-w-screen-xl py-5 lg:px-0">
+            <div className="mx-auto max-w-screen-xl py-5 lg:px-0" id="articles">
                 <ul className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {filterBlog.map((blog: any) => (
                         <li key={blog.id}>
@@ -55,9 +58,9 @@ export default function Home({ blog }: any) {
                                 href={`/blog/${blog.id}`}
                             >
                                 <img
+                                    alt="記事のイメージ画像"
                                     className="mb-4 h-[150px] w-full"
                                     src={blog.image?.url || 'https://picsum.photos/id/24/4855/1803'}
-                                    alt="記事のイメージ画像"
                                 />
                                 <h5 className="text-md mb-2 font-bold tracking-tight text-gray-900 dark:text-white lg:text-xl">
                                     {blog.title}
