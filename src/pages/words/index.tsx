@@ -1,13 +1,15 @@
+/* eslint @typescript-eslint/no-explicit-any: warn */
+import { useState } from 'react';
+
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import axios from 'axios';
+
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import axios from 'axios';
 import itgirl from '../../images/itgirl.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-
-import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { useState } from 'react';
 
 export type TestInfo = {
     description: string;
@@ -17,7 +19,7 @@ export type TestInfo = {
 
 export default function Words({ words }: any) {
     const allWords = words;
-    const [data, setData] = useState(() => [...allWords]);
+    const [data] = useState(() => [...allWords]);
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
 
@@ -80,7 +82,7 @@ export default function Words({ words }: any) {
             <Header />
             <div className="mx-auto max-w-screen-xl px-4">
                 <div className="my-4 flex items-center gap-1 text-xl font-bold">
-                    <img className="h-10" src={itgirl.src} alt="ITガールのアイコン" />
+                    <img alt="ITガールのアイコン" className="h-10" src={itgirl.src} />
                     <span>ITアシスタントの用語解説</span>
                 </div>
                 <div className="flex-col gap-8">

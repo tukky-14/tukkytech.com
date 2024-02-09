@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build && next export && next-sitemap --config sitemap.config.js",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "lint-fix": "eslint --fix ."
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
@@ -28,6 +29,8 @@
         "dayjs": "^1.11.7",
         "eslint": "8.39.0",
         "eslint-config-next": "13.3.1",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-sort-keys-fix": "^1.1.2",
         "eslint-plugin-typescript-sort-keys": "^3.1.0",
         "eslint-plugin-unused-imports": "^3.0.0",
