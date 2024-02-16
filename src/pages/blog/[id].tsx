@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/no-explicit-any: warn */
+/* eslint @typescript-eslint/no-explicit-any: off */
 
 import 'highlight.js/styles/hybrid.css';
 import { faCalendarPlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { load } from 'cheerio';
 import dayjs from 'dayjs';
 import hljs from 'highlight.js';
+
+import useCommonInitialization from '@/hooks/use-common-initialization';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -15,6 +17,8 @@ import { client, getAllBlogs } from '../../libs/client';
 import { renderToc } from '../../libs/render-toc';
 
 export default function BlogId({ blog }: any) {
+    useCommonInitialization();
+
     const toc = renderToc(blog.body);
 
     return (

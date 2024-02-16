@@ -1,10 +1,12 @@
-/* eslint @typescript-eslint/no-explicit-any: warn */
+/* eslint @typescript-eslint/no-explicit-any: off */
 import { useState } from 'react';
 
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import axios from 'axios';
+
+import useCommonInitialization from '@/hooks/use-common-initialization';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -18,6 +20,8 @@ export type TestInfo = {
 };
 
 export default function Words({ words }: any) {
+    useCommonInitialization();
+
     const allWords = words;
     const [data] = useState(() => [...allWords]);
     const [showModal, setShowModal] = useState(false);

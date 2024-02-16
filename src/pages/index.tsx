@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/no-explicit-any: warn */
+/* eslint @typescript-eslint/no-explicit-any: off */
 
 import { useState } from 'react';
 
@@ -7,12 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
+import useCommonInitialization from '@/hooks/use-common-initialization';
+
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getAllBlogs } from '../libs/client';
 
 export default function Home({ blog }: any) {
+    useCommonInitialization();
+
     const allBlog = blog;
     const allTags: any = [
         ...new Set(
@@ -62,7 +66,7 @@ export default function Home({ blog }: any) {
                                     className="mb-4 h-[150px] w-full"
                                     src={blog.image?.url || 'https://picsum.photos/id/24/4855/1803'}
                                 />
-                                <h5 className="text-md mb-2 font-bold tracking-tight text-gray-900 dark:text-white lg:text-xl">
+                                <h5 className="text-md mb-2 font-bold tracking-tight text-gray-900 lg:text-xl dark:text-white">
                                     {blog.title}
                                 </h5>
                                 <div className="absolute bottom-4">

@@ -1,10 +1,12 @@
-/* eslint @typescript-eslint/no-explicit-any: warn */
+/* eslint @typescript-eslint/no-explicit-any: off */
 // 画像サイズ → 640x400
 
 import { useState } from 'react';
 
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import useCommonInitialization from '@/hooks/use-common-initialization';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -20,6 +22,8 @@ type LinkProps = {
 };
 
 export default function Links({ links }: any) {
+    useCommonInitialization();
+
     const allLinks = links;
     const allTags: any = [
         ...new Set(
