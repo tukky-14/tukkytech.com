@@ -1,23 +1,20 @@
 import { useEffect } from 'react';
 
-import { useRouter } from 'next/navigation';
-
-import { useAuth } from './use-auth';
+import { currentAuthenticatedUser, useAuth } from './use-auth';
 
 const useCommonInitialization = () => {
-    const { isAuthenticated } = useAuth();
-    const router = useRouter();
+    const { setIsAuthenticated } = useAuth();
 
     /**
      * 画面共通の初期化処理
      */
     useEffect(() => {
         const authCheck = async () => {
-            const res = await isAuthenticated();
-            console.log('isAuthenticated:', res);
+            const res = await currentAuthenticatedUser();
+            setIsAuthenticated(res);
         };
         authCheck();
-    }, [isAuthenticated, router]);
+    }, [setIsAuthenticated]);
 };
 
 export default useCommonInitialization;

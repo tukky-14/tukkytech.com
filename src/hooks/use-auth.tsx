@@ -1,3 +1,6 @@
+'use client';
+import { ReactNode, createContext, useContext, useState, Dispatch, SetStateAction } from 'react';
+
 import { Amplify } from 'aws-amplify';
 import {
     signIn as signInAmplify,
@@ -62,16 +65,25 @@ export async function signUp(username: string, password: string, email: string) 
     }
 }
 
-export function useAuth() {
-    const isAuthenticated = async () => {
-        try {
-            return await currentAuthenticatedUser();
-        } catch (err) {
-            return false;
-        }
-    };
+export type AuthContextType = {
+    isAuthenticated: boolean;
+    setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
+};
 
-    return {
-        isAuthenticated,
-    };
-}
+// コンテキストの作成
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// コンテキストのプロバイダー
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+    return <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>{children}</AuthContext.Provider>;
+};
+
+// コンテキストのコンシューマー
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within a AuthProvider');
+    }
+    return context;
+};

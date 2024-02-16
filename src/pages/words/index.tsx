@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import axios from 'axios';
 
+import { useAuth } from '@/hooks/use-auth';
 import useCommonInitialization from '@/hooks/use-common-initialization';
 
 import Container from '../../components/Container';
@@ -21,6 +22,7 @@ export type TestInfo = {
 
 export default function Words({ words }: any) {
     useCommonInitialization();
+    const { isAuthenticated } = useAuth();
 
     const allWords = words;
     const [data] = useState(() => [...allWords]);
@@ -85,6 +87,7 @@ export default function Words({ words }: any) {
         <Container>
             <Header />
             <div className="mx-auto max-w-screen-xl px-4">
+                {isAuthenticated && <div className="my-4 bg-yellow-200 text-center text-lg font-bold">ログイン中</div>}
                 <div className="my-4 flex items-center gap-1 text-xl font-bold">
                     <img alt="ITガールのアイコン" className="h-10" src={itgirl.src} />
                     <span>ITアシスタントの用語解説</span>

@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { useRouter } from 'next/router';
 
+import { AuthProvider } from '@/hooks/use-auth';
+
 import * as gtag from '../libs/gtag';
 
 import type { AppProps } from 'next/app';
@@ -40,7 +42,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     `,
                 }}
             />
-            <Component {...pageProps} />
+            <AuthProvider>
+                <Component {...pageProps} />
+            </AuthProvider>
         </>
     );
 }
