@@ -1,6 +1,8 @@
-import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+
+import { signOut, useAuth } from '@/hooks/use-auth';
 
 import blog from '../images/blog.png';
 
@@ -16,10 +18,11 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
     const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop } = props;
+    const { isAuthenticated } = useAuth();
 
     return (
         <>
-            <header className="border-gray-200 bg-white dark:bg-gray-900 dark:text-white">
+            <header className="realative border-gray-200 bg-white dark:bg-gray-900 dark:text-white">
                 <div className="mx-auto flex max-w-screen-xl items-center justify-between p-4">
                     <button className="flex items-center" onClick={handleAllClick}>
                         <img alt="サイトのアイコン画像" className="mr-1 h-7 w-7" src={blog.src} />
@@ -27,13 +30,21 @@ const Header = (props: HeaderProps) => {
                             Tukky Tech Blog
                         </Link>
                     </button>
-                    <Link
-                        className="flex items-center pb-2 pt-2 text-xs text-gray-900 hover:text-cyan-600 sm:text-sm dark:text-white"
-                        href="/links"
-                    >
-                        <FontAwesomeIcon className="mr-1" icon={faPaperclip} />
-                        <p>開発リンク集</p>
-                    </Link>
+                    <div className="flex">
+                        <Link
+                            className="flex items-center pb-2 pt-2 text-xs text-gray-900 hover:text-cyan-600 sm:text-sm dark:text-white"
+                            href="/links"
+                        >
+                            <FontAwesomeIcon className="mr-1" icon={faPaperclip} />
+                            <p>開発リンク集</p>
+                        </Link>
+                        {/* ログアウト */}
+                        {isAuthenticated && (
+                            <button className="ml-2" onClick={async () => await signOut()}>
+                                <FontAwesomeIcon className="text-cyan-600" icon={faArrowRightFromBracket} />
+                            </button>
+                        )}
+                    </div>
                 </div>
             </header>
             <NavbarBase
