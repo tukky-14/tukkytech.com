@@ -6,7 +6,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { DataGrid, GridColDef, jaJP, GridCellParams } from '@mui/x-data-grid';
 import axios from 'axios';
 
-import Container from '@/components/Container';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
@@ -64,9 +63,9 @@ export default function DataGridCustom({ words }: any) {
     const rows = words;
 
     return (
-        <Container>
+        <div className="h-screen">
             <Header />
-            <div className="mx-auto h-[450px] w-full max-w-screen-xl overflow-scroll p-4">
+            <div className="mx-auto w-full max-w-screen-xl flex-1 overflow-scroll p-4">
                 <DataGrid
                     checkboxSelection
                     columns={columns}
@@ -93,7 +92,7 @@ export default function DataGridCustom({ words }: any) {
             <div>
                 <Footer />
             </div>
-        </Container>
+        </div>
     );
 }
 
