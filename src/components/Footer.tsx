@@ -1,5 +1,5 @@
-import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Link from 'next/link';
 
@@ -25,7 +25,7 @@ const Footer = () => {
                             className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
                             href="/words-mui"
                         >
-                            <EnergySavingsLeafIcon />
+                            <LibraryBooksIcon />
                         </Link>
                         <Link
                             className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
