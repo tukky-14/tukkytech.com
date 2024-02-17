@@ -20,15 +20,15 @@ const Footer = () => {
                         </a>
                         . All Rights Reserved.
                     </span>
-                    <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+                    <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <Link
-                            className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
-                            href="/words"
+                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
+                            href="/words-mui"
                         >
                             <EnergySavingsLeafIcon />
                         </Link>
                         <a
-                            className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
                             href="https://twitter.com/tukkyhistory"
                             rel="noreferrer"
                             target="_blank"
@@ -36,7 +36,7 @@ const Footer = () => {
                             <TwitterIcon />
                         </a>
                         <a
-                            className="grayscale text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
                             href="https://github.com/tukky-14"
                             rel="noreferrer"
                             target="_blank"
