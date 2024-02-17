@@ -2,13 +2,14 @@
 
 // https://mui.com/x/react-data-grid/
 
-// import EditIcon from '@mui/icons-material/Edit';
-import { DataGrid, GridColDef, jaJP, GridRenderCellParams } from '@mui/x-data-grid';
+import EditIcon from '@mui/icons-material/Edit';
+import { DataGrid, GridColDef, jaJP, GridRenderCellParams, GridCellParams } from '@mui/x-data-grid';
 import axios from 'axios';
 
 import Footer from '@/components/Footer';
 import GridCellExpand from '@/components/GridCellExpand';
 import Header from '@/components/Header';
+import { useAuth } from '@/hooks/use-auth';
 
 import GridCustomToolbar from '../../components/GridCustomToolbar';
 import itgirl from '../../images/itgirl.png';
@@ -18,17 +19,18 @@ function renderCellExpand(params: GridRenderCellParams<any, string>) {
 }
 
 const columns: GridColDef[] = [
-    // {
-    //     field: 'icon',
-    //     headerName: '',
-    //     width: 60,
-    //     align: 'center',
-    //     renderCell: (params) => (
-    //         <button className="text-blue-600 hover:cursor-pointer" onClick={() => handleClickIcon(params)}>
-    //             <EditIcon />
-    //         </button>
-    //     ),
-    // },
+    {
+        field: 'icon',
+        headerName: '',
+        width: 60,
+        align: 'center',
+        hideable: false,
+        renderCell: (params) => (
+            <button className="text-blue-600 hover:cursor-pointer" onClick={() => handleClickIcon(params)}>
+                <EditIcon />
+            </button>
+        ),
+    },
     {
         field: 'title',
         headerName: '用語',
@@ -61,14 +63,16 @@ const styles = {
     },
 };
 
-// const handleClickIcon = (params: GridCellParams) => {
-//     const row = params.row;
-//     const values = Object.keys(row).map((key) => `${key}: ${row[key]}`);
-//     alert(values.join('\n'));
-// };
+const handleClickIcon = (params: GridCellParams) => {
+    const row = params.row;
+    const values = Object.keys(row).map((key) => `${key}: ${row[key]}`);
+    alert(values.join('\n'));
+};
 
 export default function DataGridCustom({ words }: any) {
     const rows = words;
+
+    const { isAuthenticated } = useAuth();
 
     return (
         <div className="h-screen">
@@ -86,6 +90,11 @@ export default function DataGridCustom({ words }: any) {
                         pagination: {
                             paginationModel: {
                                 pageSize: 50,
+                            },
+                        },
+                        columns: {
+                            columnVisibilityModel: {
+                                icon: isAuthenticated,
                             },
                         },
                     }}

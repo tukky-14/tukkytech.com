@@ -23,7 +23,7 @@ const Footer = () => {
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <Link
                             className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
-                            href="/words-mui"
+                            href="/words"
                         >
                             <LibraryBooksIcon />
                         </Link>

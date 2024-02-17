@@ -20,6 +20,14 @@ const Header = (props: HeaderProps) => {
     const { allTags, handleAllClick, handleTagClick, handleSearchChange, isTop } = props;
     const { isAuthenticated } = useAuth();
 
+    /**
+     * ログアウト処理
+     */
+    const handleLogoutClick = async () => {
+        await signOut();
+        location.reload();
+    };
+
     return (
         <>
             <header className="realative border-gray-200 bg-white dark:bg-gray-900 dark:text-white">
@@ -40,7 +48,7 @@ const Header = (props: HeaderProps) => {
                         </Link>
                         {/* ログアウト */}
                         {isAuthenticated && (
-                            <button className="ml-2" onClick={async () => await signOut()}>
+                            <button className="ml-2" onClick={handleLogoutClick}>
                                 <FontAwesomeIcon className="text-cyan-600" icon={faArrowRightFromBracket} />
                             </button>
                         )}
