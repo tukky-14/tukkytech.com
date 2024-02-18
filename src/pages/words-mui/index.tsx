@@ -93,7 +93,7 @@ export default function DataGridCustom({ words }: any) {
                     <span>ITアシスタントの用語解説</span>
                 </div>
                 <DataGrid
-                    checkboxSelection
+                    checkboxSelection={isAuthenticated}
                     columns={columns}
                     disableRowSelectionOnClick
                     initialState={{
