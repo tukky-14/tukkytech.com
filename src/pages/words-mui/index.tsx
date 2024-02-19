@@ -9,6 +9,7 @@ import { DataGrid, GridColDef, jaJP, GridCellParams } from '@mui/x-data-grid';
 import axios from 'axios';
 
 import Footer from '@/components/Footer';
+import GridCellEditModal from '@/components/GridCellEditModal';
 import GridCellModal from '@/components/GridCellModal';
 import Header from '@/components/Header';
 import { useAuth } from '@/hooks/use-auth';
@@ -32,19 +33,15 @@ const styles = {
     },
 };
 
-const handleIconClick = (params: GridCellParams) => {
-    const row = params.row;
-    const values = Object.keys(row).map((key) => `${key}: ${row[key]}`);
-    alert(values.join('\n'));
-};
-
 export default function DataGridCustom({ words }: any) {
     const rows = words;
 
     const { isAuthenticated } = useAuth();
 
     const [showModal, setShowModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
+    const [editModalContent, setEditModalContent] = useState({ title: '', description: '' });
 
     const columns: GridColDef[] = [
         {
@@ -54,7 +51,7 @@ export default function DataGridCustom({ words }: any) {
             align: 'center',
             hideable: false,
             renderCell: (params) => (
-                <button className="text-blue-600 hover:cursor-pointer" onClick={() => handleIconClick(params)}>
+                <button className="text-blue-600 hover:cursor-pointer" onClick={() => handleEditClick(params)}>
                     <EditIcon />
                 </button>
             ),
@@ -83,6 +80,11 @@ export default function DataGridCustom({ words }: any) {
     // モーダルを閉じるときのハンドラ
     const handleCloseModal = () => {
         setShowModal(false);
+    };
+
+    const handleEditClick = (params: GridCellParams) => {
+        setShowEditModal(true);
+        setEditModalContent({ title: params.row.title, description: params.row.description });
     };
 
     return (
@@ -123,6 +125,9 @@ export default function DataGridCustom({ words }: any) {
                 />
             </div>
             {showModal && <GridCellModal handleCloseModal={handleCloseModal} modalContent={modalContent} />}
+            {showEditModal && (
+                <GridCellEditModal {...{ showEditModal, setShowEditModal, editModalContent, setEditModalContent }} />
+            )}
             <Footer />
         </div>
     );
