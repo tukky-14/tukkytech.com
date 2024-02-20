@@ -19,17 +19,16 @@ exports.handler = async () => {
             items = items.concat(data.Items);
         }
 
-        // itemsをmessage順に並び替え
-        items.sort((a, b) => a.message.localeCompare(b.message));
-
         // itemsのプロパティを編集
-        const newItems = items.map((item, index) => {
-            return {
-                id: index + 1,
-                title: item.message,
-                description: item.reply_message,
-            };
-        });
+        const newItems = items
+            .map((item, index) => {
+                return {
+                    id: index + 1,
+                    title: item.message,
+                    description: item.reply_message,
+                };
+            })
+            .sort((a, b) => a.title.localeCompare(b.title));
 
         console.log(JSON.stringify(newItems));
 
