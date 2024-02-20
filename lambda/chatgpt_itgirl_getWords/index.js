@@ -20,33 +20,22 @@ exports.handler = async () => {
         }
 
         // itemsをmessage順に並び替え
-        items.sort((a, b) => {
-            if (a.message < b.message) {
-                return -1;
-            }
-            if (a.message > b.message) {
-                return 1;
-            }
-            return 0;
-        });
+        items.sort((a, b) => a.message.localeCompare(b.message));
 
         // itemsのプロパティを編集
-        for (const [index, item] of items.entries()) {
-            item.id = index + 1;
-            item.title = item.message;
-            item.description = item.reply_message;
-            delete item.message;
-            delete item.reply_message;
-            delete item.created_at;
-            delete item.timestamp;
-            delete item.user_id;
-        }
+        const newItems = items.map((item, index) => {
+            return {
+                id: index + 1,
+                title: item.message,
+                description: item.reply_message,
+            };
+        });
 
-        console.log(JSON.stringify(items));
+        console.log(JSON.stringify(newItems));
 
         return {
             statusCode: 200,
-            body: JSON.stringify(items),
+            body: JSON.stringify(newItems),
         };
     } catch (error) {
         console.error('DynamoDBエラー: ', error);
