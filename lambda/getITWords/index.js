@@ -24,6 +24,8 @@ exports.handler = async () => {
             .map((item, index) => {
                 return {
                     id: index + 1,
+                    user_id: item.user_id,
+                    timestamp: item.timestamp,
                     title: item.message,
                     description: item.reply_message,
                 };
