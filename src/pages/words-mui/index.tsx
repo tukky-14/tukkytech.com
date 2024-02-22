@@ -5,6 +5,7 @@
 import { useState } from 'react';
 
 import EditIcon from '@mui/icons-material/Edit';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { DataGrid, GridColDef, jaJP, GridCellParams } from '@mui/x-data-grid';
 import axios from 'axios';
 
@@ -59,16 +60,21 @@ export default function DataGridCustom({ words }: any) {
         {
             field: 'title',
             headerName: '用語',
-            width: 250,
+            width: 220,
         },
         {
             field: 'description',
             headerName: '説明',
             flex: 1,
             renderCell: (params: any) => (
-                <button className="py-4" onClick={() => handleWordClick(params.value)}>
-                    {params.value}
-                </button>
+                <>
+                    <button className="hidden py-4 sm:inline" onClick={() => handleWordClick(params.value)}>
+                        {params.value}
+                    </button>
+                    <button className="text-blue-600 sm:hidden" onClick={() => handleWordClick(params.value)}>
+                        <LibraryBooksIcon />
+                    </button>
+                </>
             ),
         },
     ];
