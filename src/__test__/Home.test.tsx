@@ -8,7 +8,7 @@ import { AuthProvider } from '@/hooks/use-auth';
 import Home from '../pages/index';
 
 describe('Rendering', () => {
-    it('Should render hello text', () => {
+    it('Should render title text', () => {
         const blog = [
             {
                 id: 'vscode-project-manager',
