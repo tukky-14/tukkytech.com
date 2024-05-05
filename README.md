@@ -1,11 +1,22 @@
+# Tukky Tech Blog
+
 ![tukkytechサイトの画像](public/tukkytech-top.png)
 
 <br/>
 
 ### デプロイ先
 
--   AWS S3 × CloudFront  
-    https://tukkytech.com
+##### AWS S3 × CloudFront
+
+https://tukkytech.com
+
+<br/>
+
+##### デプロイコマンド
+
+```bash
+aws codepipeline start-pipeline-execution --name tukkytech-pipeline
+```
 
 <br/>
 
