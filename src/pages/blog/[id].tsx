@@ -25,7 +25,7 @@ export default function BlogId({ blog }: any) {
         <Container>
             <Header isTop={false} />
             <div className="mx-auto max-w-screen-xl">
-                <main className="max-w-screen-md bg-white px-4 py-5">
+                <main className="w-screen bg-white px-4 py-5 sm:max-w-screen-md">
                     <h1 className="mb-2 text-xl font-bold sm:text-2xl">{blog.title}</h1>
                     <div className="flex gap-4 leading-6">
                         <p className="flex items-center text-sm text-gray-600">
