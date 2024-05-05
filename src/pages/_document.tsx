@@ -16,6 +16,11 @@ export default function Document() {
                 <meta content="yes" name="mobile-web-app-capable" />
                 <link href="/icon_16.png" rel="icon" />
                 <link href="/icon_192.png" rel="apple-touch-icon" sizes="192x192" />
+                <script
+                    async
+                    crossOrigin="anonymous"
+                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID}`}
+                ></script>
             </Head>
             <body>
                 <Main />
