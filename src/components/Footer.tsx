@@ -1,4 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import Link from 'next/link';
 
@@ -26,7 +27,12 @@ const Footer = () => {
                         >
                             <LibraryBooksIcon />
                         </Link>
-
+                        <Link
+                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
+                            href="/contact"
+                        >
+                            <EmailIcon />
+                        </Link>
                         <Link
                             className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
                             href="/profile"
