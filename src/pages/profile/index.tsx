@@ -19,8 +19,8 @@ export default function Profile() {
             <Header isTop={false} />
             <div className="mx-auto max-w-screen-xl">
                 <main className="w-screen bg-white px-4 py-5 sm:max-w-screen-md">
-                    <div className="flex flex-col items-center">
-                        <div className="text-xl font-bold">プロフィール</div>
+                    <div className="mb-20 flex flex-col items-center">
+                        <div className="text-2xl font-bold">プロフィール</div>
                         <div className="my-2">Webエンジニア</div>
                         <img alt="プロフィールアイコン" className="h-40 rounded-full" src={tukky.src} />
                         <div className="my-2 flex flex-col items-center">
