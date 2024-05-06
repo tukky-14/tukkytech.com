@@ -1,6 +1,5 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -27,21 +26,12 @@ const Footer = () => {
                         >
                             <LibraryBooksIcon />
                         </Link>
+
                         <Link
                             className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
-                            href="https://twitter.com/tukkyhistory"
-                            rel="noreferrer"
-                            target="_blank"
+                            href="/profile"
                         >
-                            <TwitterIcon />
-                        </Link>
-                        <Link
-                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
-                            href="https://github.com/tukky-14"
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <GitHubIcon />
+                            <AccountCircleIcon />
                         </Link>
                     </div>
                 </div>
