@@ -14,7 +14,8 @@ const TableOfContents = (props: Props) => {
     }
 
     return (
-        <div className="mt-4 text-xs">
+        <div className="mt-4 rounded border p-2 text-sm">
+            <div className="mb-2 font-bold">目次</div>
             <ul className="flex flex-col gap-1.5">
                 {toc.map((data) => (
                     <li key={data.id}>
