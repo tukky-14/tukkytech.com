@@ -1,5 +1,5 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import EmailIcon from '@mui/icons-material/Email';
+import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import Link from 'next/link';
 
@@ -27,22 +27,18 @@ const Footer = () => {
                     </div>
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <Link
-                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
+                            className="flex items-center pb-2 pt-2 text-xs text-gray-500 hover:text-cyan-600 sm:text-sm dark:text-gray-400"
                             href="/words-mui"
                         >
-                            <LibraryBooksIcon />
+                            <LibraryBooksIcon className="mr-1" fontSize="small" />
+                            <p>IT用語解説</p>
                         </Link>
                         <Link
-                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
-                            href="/contact"
+                            className="flex items-center pb-2 pt-2 text-xs text-gray-500 hover:text-cyan-600 sm:text-sm dark:text-gray-400"
+                            href="/links"
                         >
-                            <EmailIcon />
-                        </Link>
-                        <Link
-                            className="text-gray-500 grayscale hover:text-gray-900 dark:hover:text-white"
-                            href="/profile"
-                        >
-                            <AccountCircleIcon />
+                            <FontAwesomeIcon className="mr-1" icon={faPaperclip} />
+                            <p>開発リンク集</p>
                         </Link>
                     </div>
                 </div>

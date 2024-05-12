@@ -1,5 +1,7 @@
-import { faPaperclip, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
 import Link from 'next/link';
 
 import { signOut, useAuth } from '@/hooks/use-auth';
@@ -38,14 +40,24 @@ const Header = (props: HeaderProps) => {
                             Tukky Tech Blog
                         </Link>
                     </button>
-                    <div className="flex">
-                        <Link
-                            className="flex items-center pb-2 pt-2 text-xs text-gray-900 hover:text-cyan-600 sm:text-sm dark:text-white"
-                            href="/links"
-                        >
-                            <FontAwesomeIcon className="mr-1" icon={faPaperclip} />
-                            <p>開発リンク集</p>
-                        </Link>
+                    <div className="flex text-sm">
+                        <div className="flex gap-4">
+                            <Link
+                                className="flex items-center gap-0.5 text-gray-500 grayscale hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                                href="/profile"
+                            >
+                                <AccountCircleIcon />
+                                <p>プロフィール</p>
+                            </Link>
+                            <Link
+                                className="flex items-center gap-0.5 text-gray-500 grayscale hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                                href="/contact"
+                            >
+                                <EmailIcon />
+                                <p>お問い合わせ</p>
+                            </Link>
+                        </div>
+
                         {/* ログアウト */}
                         {isAuthenticated && (
                             <button className="ml-2" onClick={handleLogoutClick}>
