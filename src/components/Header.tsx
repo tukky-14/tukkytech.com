@@ -47,14 +47,14 @@ const Header = (props: HeaderProps) => {
                                 href="/profile"
                             >
                                 <AccountCircleIcon />
-                                <p>プロフィール</p>
+                                <p className="hidden sm:block">プロフィール</p>
                             </Link>
                             <Link
                                 className="flex items-center gap-0.5 text-gray-500 grayscale hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                                 href="/contact"
                             >
                                 <EmailIcon />
-                                <p>お問い合わせ</p>
+                                <p className="hidden sm:block">お問い合わせ</p>
                             </Link>
                         </div>
 
