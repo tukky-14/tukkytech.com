@@ -12,14 +12,6 @@ https://tukkytech.com
 
 <br/>
 
-##### デプロイコマンド
-
-```bash
-aws codepipeline start-pipeline-execution --name tukkytech-pipeline
-```
-
-<br/>
-
 ### 参考記事
 
 -   [microCMS + Next.js で Jamstack ブログを作ってみよう](https://blog.microcms.io/microcms-next-jamstack-blog/)
