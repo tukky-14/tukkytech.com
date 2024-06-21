@@ -1,6 +1,4 @@
-import { ReactNode, useEffect } from 'react';
-
-import { usePathname, useRouter } from 'next/navigation';
+import { ReactNode } from 'react';
 
 import CommonHead from './CommonHead';
 
@@ -9,12 +7,12 @@ type Props = {
 };
 
 const Container = ({ children }: Props) => {
-    const pathname = usePathname();
-    const router = useRouter();
+    // const pathname = usePathname();
+    // const router = useRouter();
 
-    useEffect(() => {
-        router.push(pathname);
-    }, []);
+    // useEffect(() => {
+    //     router.push(pathname);
+    // }, []);
 
     return (
         <>
