@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
+import GoogleAdsense from '@/components/GoogleAdsense';
 import useCommonInitialization from '@/hooks/use-common-initialization';
 
 import Container from '../components/Container';
@@ -90,6 +91,10 @@ export default function Home({ blog }: any) {
                     ))}
                 </ul>
             </div>
+            {/* 広告ユニット */}
+            {process.env.NODE_ENV !== 'development' && (
+                <GoogleAdsense client="ca-pub-7294439895581099" slot="5725648866" style={{ display: 'block' }} />
+            )}
             <Footer />
         </Container>
     );
