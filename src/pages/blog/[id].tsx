@@ -7,6 +7,7 @@ import { load } from 'cheerio';
 import dayjs from 'dayjs';
 import hljs from 'highlight.js';
 
+import GoogleAdsense from '@/components/GoogleAdsense';
 import useCommonInitialization from '@/hooks/use-common-initialization';
 
 import Container from '../../components/Container';
@@ -47,6 +48,9 @@ export default function BlogId({ blog }: any) {
                     />
                 </main>
             </div>
+            {process.env.NODE_ENV !== 'development' && (
+                <GoogleAdsense client="ca-pub-7294439895581099" slot="5725648866" style={{ display: 'block' }} />
+            )}
             <Footer />
         </Container>
     );

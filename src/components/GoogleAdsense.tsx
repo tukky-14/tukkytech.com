@@ -36,6 +36,7 @@ const GoogleAdsense = ({ client, slot, style }: GoogleAdsenseProps) => {
 
     return (
         <div
+            className="mb-5"
             css={css`
                 text-align: center;
             `}
