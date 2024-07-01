@@ -58,6 +58,11 @@ export default function DataGridCustom({ words }: any) {
             ),
         },
         {
+            field: 'id',
+            headerName: 'No',
+            width: 10,
+        },
+        {
             field: 'title',
             headerName: '用語',
             width: 220,
@@ -142,9 +147,13 @@ export default function DataGridCustom({ words }: any) {
 export const getStaticProps = async () => {
     const { data } = await axios.get(process.env.NEXT_PUBLIC_ITWORDS_APIENDPOINT || '');
 
+    const wordsData = JSON.parse(data.body);
+
     return {
         props: {
-            words: JSON.parse(data.body),
+            words: wordsData.map((word: any, index: number) => {
+                return { ...word, id: index + 1 };
+            }),
         },
     };
 };
