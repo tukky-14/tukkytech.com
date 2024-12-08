@@ -40,8 +40,8 @@ export default function Home({ blog }: any) {
     };
 
     const handleSearchChange = (e: any) => {
-        const searchWord = e.target.value;
-        const searchResult = allBlog.filter((blog: any) => blog.title.includes(searchWord));
+        const searchWord = e.target.value.toLowerCase();
+        const searchResult = allBlog.filter((blog: any) => blog.title.toLowerCase().includes(searchWord));
         setFilterBlog(searchResult);
     };
 
